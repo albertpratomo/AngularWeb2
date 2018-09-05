@@ -10,6 +10,7 @@ import { EmployeesComponent } from './employees/employees.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TabsComponent } from './tabs/tabs.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     DepartmentsComponent,
     EmployeesComponent,
     TabsComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,
