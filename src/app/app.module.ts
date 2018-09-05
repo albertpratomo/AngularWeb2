@@ -8,6 +8,8 @@ import { DepartmentsComponent } from './departments/departments.component';
 import { EmployeesComponent } from './employees/employees.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TabsComponent } from './tabs/tabs.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HeroesComponent,
     TasksComponent,
     DepartmentsComponent,
-    EmployeesComponent
+    EmployeesComponent,
+    TabsComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
