@@ -1,7 +1,18 @@
-<h1>{{title}}</h1>
-<p>Employees:</p>
-<ul>
-<li *ngFor="let employee of employees">
-  {{ employee }}
-</li>
-</ul>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Employee Name</th>
+      <th scope="col">phone Number</th>
+      <th scope="col">email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees; let i = index">
+      <td scope="row">{{ i+1 }}</td>
+      <td>{{ employee }}</td>
+      <td>123456789</td>
+      <td>123asd@gmail.com</td>
+    </tr>
+  </tbody>
+</table>
