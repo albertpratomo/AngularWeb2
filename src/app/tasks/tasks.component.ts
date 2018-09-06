@@ -13,5 +13,5 @@ export class TasksComponent implements OnInit {
   }
   
   title = 'Tasks';
-  tasks = ['Buy groceries', 'Eat medicine', 'Take a bath', 'Fix bicycle'];
+  tasks = ['Buy groceries', 'Eat medicine', 'Take a bath', 'Fix bicycle','Drink water'];
 }
