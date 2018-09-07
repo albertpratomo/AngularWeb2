@@ -12,7 +12,7 @@ export class DepartmentsComponent implements OnInit {
   ngOnInit() {
   }
 
-   title = 'Departments';
-  departments = ['ICT', 'BUSINESS', 'ARTS', 'HISTORY'];
+ 
+  departments = [' Music ', 'Arts', 'History'];
 
 }

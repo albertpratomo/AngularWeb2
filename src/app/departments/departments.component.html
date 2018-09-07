@@ -1,5 +1,36 @@
-<ul>
-<li *ngFor="let department of departments">
-  {{ department }}
-</li>
-</ul>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Building</th>
+      <th scope="col">City</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let department of departments; let i = index">
+      <th scope="row">{{ i+1 }}</th>
+      <td>{{ department }}</td>
+      <td>R.33</td>
+      <td>Eindhoven</td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>Arts</td>
+      <td>R3</td>
+      <td>Amsterdam</td>
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <td>History</td>
+      <td>R23</td>
+      <td>Delft</td>
+    </tr>
+    <tr>
+      <th scope="row">6</th>
+      <td>Music</td>
+      <td>R3.2</td>
+      <td>Rotterdam</td>
+    </tr>
+  </tbody>
+</table>
