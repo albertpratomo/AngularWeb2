@@ -1,18 +1,20 @@
-<table class="table">
+<table class="table table-hover">
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Employee Name</th>
-      <th scope="col">phone Number</th>
+      <th scope="col">name</th>
       <th scope="col">email</th>
+      <th cope="col">phone</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let employee of employees; let i = index">
-      <td scope="row">{{ i+1 }}</td>
-      <td>{{ employee }}</td>
-      <td>123456789</td>
-      <td>123asd@gmail.com</td>
+    <tr *ngFor="let employee of employees; let i = index" (click)="onSelect(employee)">
+      <td scope="row">{{employee.id}}</td>
+      <td>{{employee.name}}</td>
+      <td>{{employee.email}}</td>
+      <td>{{employee.phone}}</td>
     </tr>
   </tbody>
 </table>
+
+<app-detailemployee [selectedEmployee]="selectedEmployee"></app-detailemployee>
