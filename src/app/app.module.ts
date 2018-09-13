@@ -11,6 +11,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TabsComponent } from './tabs/tabs.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { FormsModule } from '@angular/forms';
+import { DetaildepartmentComponent } from './detaildepartment/detaildepartment.component';
 
 
 @NgModule({
@@ -22,9 +24,11 @@ import { ProjectsComponent } from './projects/projects.component';
     EmployeesComponent,
     TabsComponent,
     NavbarComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    DetaildepartmentComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     NgbModule.forRoot()
   ],

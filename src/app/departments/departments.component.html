@@ -1,5 +1,5 @@
-<table class="table">
-  <thead class="thead-dark">
+<table class="table table-hover">
+  <thead class="thead-light">
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
@@ -8,29 +8,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let department of departments; let i = index">
-      <th scope="row">{{ i+1 }}</th>
-      <td>{{ department }}</td>
-      <td>R.33</td>
-      <td>Eindhoven</td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>Arts</td>
-      <td>R3</td>
-      <td>Amsterdam</td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td>History</td>
-      <td>R23</td>
-      <td>Delft</td>
-    </tr>
-    <tr>
-      <th scope="row">6</th>
-      <td>Music</td>
-      <td>R3.2</td>
-      <td>Rotterdam</td>
+    <tr *ngFor="let department of departments; let i = index" (click)="onSelect(department)">
+      <th scope="row">{{ department.id }}</th>
+      <td>{{ department.name }}</td>
+      <td>{{department.building}}</td>
+      <td>{{department.city}}</td>
     </tr>
   </tbody>
 </table>
+<app-detaildepartment [selectedDepartment]="selectedDepartment"></app-detaildepartment>
