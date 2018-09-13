@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table table-hover">
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
@@ -8,11 +8,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let task of tasks; let i = index">
-      <th scope="row">{{ i+1 }}</th>
-      <td>{{ task }}</td>
-      <td>Wenjia</td>
-      <td>21-10-2018</td>
+    <tr *ngFor="let task of tasks; let i = index;" (click)="onSelect(task)">
+      <th scope="row">{{ task.id }}</th>
+      <td>{{ task.title }}</td>
+      <td>{{task.member}}</td>
+      <td>{{task.deadline}}</td>
     </tr>
   </tbody>
 </table>
+
+<app-detailtask [selectedTask]="selectedTask"></app-detailtask>
