@@ -9,10 +9,20 @@ import { Department } from '../department';
 })
 export class DetaildepartmentComponent implements OnInit {
 
-  closeResult: string;
+
 
   ngOnInit() {
   }
  
   @Input() selectedDepartment: Department;
+
+
+  constructor(private modalService: NgbModal) {}
+
+  open(content:any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    }, (reason) => {
+    });
+  }
+
 }
