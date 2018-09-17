@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { TabsComponent } from './tabs/tabs.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
+import { DetailtaskComponent } from './detailtask/detailtask.component';
 import { DetaildepartmentComponent } from './detaildepartment/detaildepartment.component';
 import { DetailprojectComponent } from './detailproject/detailproject.component';
 
@@ -26,6 +27,7 @@ import { DetailprojectComponent } from './detailproject/detailproject.component'
     TabsComponent,
     NavbarComponent,
     ProjectsComponent,
+    DetailtaskComponent,
     DetaildepartmentComponent,
     DetailprojectComponent
   ],

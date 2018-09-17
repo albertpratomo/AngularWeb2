@@ -1,0 +1,86 @@
+<button class="btn btn-sm btn-primary" (click)="open(modalview)"><i class="fa fa-eye"></i></button>
+<button class="btn btn-sm btn-info" (click)="open(modaledit)"><i class="fa fa-edit"></i></button>
+
+<ng-template #modalview let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Task Details</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close(modalview)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="title">Task ID</label>
+        <div class="input-group">
+          {{ selectedTask.id }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Task Title</label>
+        <div class="input-group">
+          {{ selectedTask.title }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Task Member</label>
+        <div class="input-group">
+          {{ selectedTask.member }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Task Deadline</label>
+        <div class="input-group">
+          {{ selectedTask.deadline }}
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
+<ng-template #modaledit let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit Task</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="title">Task ID</label>
+        <div class="input-group">
+          <input id="task-id" [(ngModel)]="selectedTask.id" class="form-control" placeholder="ID" name="task-id" >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Task Title</label>
+        <div class="input-group">
+          <input id="task-title" [(ngModel)]="selectedTask.title" class="form-control" placeholder="Title" name="task-title" >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Task Member</label>
+        <div class="input-group">
+          <input id="task-member" [(ngModel)]="selectedTask.member" class="form-control" placeholder="Member" name="task-member" >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Task Deadline</label>
+        <div class="input-group">
+          <input id="task-deadline" [(ngModel)]="selectedTask.deadline" class="form-control" placeholder="Deadline" name="task-deadline" >
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
+
+
+
