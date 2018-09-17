@@ -7,10 +7,12 @@ import { TasksComponent } from './tasks/tasks.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { EmployeesComponent } from './employees/employees.component';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 import { TabsComponent } from './tabs/tabs.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { DetailprojectComponent } from './detailproject/detailproject.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -22,10 +24,13 @@ import { ProjectsComponent } from './projects/projects.component';
     EmployeesComponent,
     TabsComponent,
     NavbarComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    DetailprojectComponent
   ],
   imports: [
+    NgbModule,
     BrowserModule,
+    FormsModule,
     NgbModule.forRoot()
   ],
   providers: [],
