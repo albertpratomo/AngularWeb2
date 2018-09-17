@@ -6,14 +6,16 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { EmployeesComponent } from './employees/employees.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { TabsComponent } from './tabs/tabs.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ProjectsComponent } from './projects/projects.component';
-import { DetailtaskComponent } from './detailtask/detailtask.component';
 
+import { DetailtaskComponent } from './detailtask/detailtask.component';
+import { DetaildepartmentComponent } from './detaildepartment/detaildepartment.component';
+import { DetailprojectComponent } from './detailproject/detailproject.component';
 
 @NgModule({
   declarations: [
@@ -25,9 +27,12 @@ import { DetailtaskComponent } from './detailtask/detailtask.component';
     TabsComponent,
     NavbarComponent,
     ProjectsComponent,
-    DetailtaskComponent
+    DetailtaskComponent,
+    DetaildepartmentComponent,
+    DetailprojectComponent
   ],
   imports: [
+    NgbModule,
     BrowserModule,
     FormsModule,
     NgbModule.forRoot()
