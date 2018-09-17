@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Task } from '../task';
 
 @Component({
@@ -8,9 +9,18 @@ import { Task } from '../task';
 })
 export class TasksComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
+  newTitle:string;
+  newMember:string;
+  newDeadline:string;
 
   ngOnInit() {
+  }
+
+  open(content:any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    }, (reason) => {
+    });
   }
 
   tasks: Task[] = [
@@ -26,11 +36,30 @@ export class TasksComponent implements OnInit {
   { id: 10, title:'Making presentation',member: 'Albert',deadline: '19-10-2018' }
 ];
 
-	selectedTask: Task = this.tasks[0];
+  co:number = this.tasks.length;
+
+selectedTask:Task = this.tasks[0];
 
 	onSelect(t: Task): void {
 		this.selectedTask = t;
 	}
+
+
+  createTask():void {
+    let co = this.tasks
+    let t: Task = {
+      id: this.co+1,
+      title: this.newTitle,
+      member: this.newMember,
+      deadline: this.newDeadline
+    }
+    this.tasks.push(t);
+  }
+
+  deleteTask(i: number): void{
+    this.tasks.splice(i,1);
+    this.co--;
+  }
 
 }
 

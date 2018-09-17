@@ -1,3 +1,40 @@
+<button class="btn btn-success btn-block" (click)="open(modalcreate)">
+  <i class="fa fa-plus"></i> <b> Create Task </b>
+</button>  
+<ng-template #modalcreate let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Create Task</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="title">Task Title</label>
+        <div class="input-group">
+          <input id="task-title" [(ngModel)]="newTitle" class="form-control" placeholder="Title" name="task-title" >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Task Member</label>
+        <div class="input-group">
+          <input id="task-member" [(ngModel)]="newMember" class="form-control" placeholder="Member Name" name="task-member" >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Task Deadline</label>
+        <div class="input-group">
+          <input id="task-deadline" [(ngModel)]="newDeadline" class="form-control" placeholder="DD-MM-YYYY" name="task-deadline" >
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-primary" (click)="createTask()">Create</button>
+  </div>
+</ng-template>
+
 <table class="table table-hover">
   <thead class="thead-dark">
     <tr>
@@ -5,16 +42,19 @@
       <th scope="col">Task Title</th>
       <th scope="col">Member</th>
       <th scope="col">Deadline</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let task of tasks; let i = index;" (click)="onSelect(task)">
       <th scope="row">{{ task.id }}</th>
-      <td>{{ task.title }}</td>
+      <td>{{task.title }}</td>
       <td>{{task.member}}</td>
       <td>{{task.deadline}}</td>
+      <td><app-detailtask [selectedTask]="selectedTask"></app-detailtask>
+        <button class="btn btn-sm btn-danger" (click)="deleteTask(i)"><i class="fa fa-trash"></i></button>
+   </td>
     </tr>
   </tbody>
 </table>
-
-<app-detailtask [selectedTask]="selectedTask"></app-detailtask>
+ 

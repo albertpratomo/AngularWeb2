@@ -9,11 +9,19 @@ import { Task } from '../task';
 })
 export class DetailtaskComponent implements OnInit {
 
-  constructor() { }
 
   ngOnInit() {
   }
 
   @Input() selectedTask: Task;
 
+    constructor(private modalService: NgbModal) {}
+
+  open(content:any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    }, (reason) => {
+    });
+
+
+}
 }
