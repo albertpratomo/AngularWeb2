@@ -41,16 +41,17 @@ export class ProjectsComponent implements OnInit {
 
 	createProject():void {
 		let p: Project = {
-			id: this.co+1,
+			id: this.projects[this.co-1].id + 1,
 			title: this.newTitle,
 			leader: this.newLeader,
 			deadline: this.newDeadline
 		}
 		this.projects.push(p);
+		this.co = this.projects.length;
 	}
 
 	deleteProject(i: number): void{
 		this.projects.splice(i,1);
-		this.co--;
+		this.co = this.projects.length;
 	}
 }
