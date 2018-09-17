@@ -36,11 +36,6 @@
   </div>
 </ng-template>
 
-
-
-
-
-
 <!------ ------->
 <table class="table table-hover">
   <thead class="thead-light">
@@ -53,39 +48,13 @@
     </tr>
   </thead>
   <tbody>
-
-<!---
-<tr *ngFor="let department of departments; let i = index">
-      <th scope="row">{{ i+1 }}</th>
-      <td>{{ department }}</td>
-      <td>R3</td>
-      <td>Tillburg</td>
-    </tr> 
-    <tr>
-      <th scope="row">4</th>
-      <td>Music</td>
-      <td>R4</td>
-      <td>Rotterdam</td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td>History</td>
-      <td>R33</td>
-      <td>Amsterdam</td>
-    </tr>
-    <tr>
-      <th scope="row">6</th>
-      <td>Arts</td>
-      <td>R3</td>
-      <td>Eindhoven</td>   --->
-
-
     <!------------->
     <tr *ngFor="let department of departments; let i = index" (click)="onSelect(department)">
       <th scope="row">{{ department.id }}</th>
       <td>{{ department.name }}</td>
       <td>{{department.building}}</td>
       <td>{{department.city}}</td>
+
       <td><app-detaildepartment [selectedDepartment]="selectedDepartment"></app-detaildepartment>
       <button class="btn btn-sm btn-danger" (click)="deleteDepartment(i)"><i class="fa fa-trash"></i></button> 
 

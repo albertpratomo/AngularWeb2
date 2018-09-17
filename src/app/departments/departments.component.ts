@@ -42,30 +42,32 @@ ngOnInit() {
   { id: 10, name: 'Arts' ,building:'R1',city:'Tillburg'}
 ];
  
+co:number=this.departments.length;
 
-selectedDepartment: Department;
+
+selectedDepartment: Department=this.departments[0];
 
 onSelect(department: Department): void {
   this.selectedDepartment = department;
 }
 
 createDepartment():void {
-    let co = this.department
+    let co = this.departments
     let department: Department = {
       id: this.co+1,
       name: this.newName,
       building: this.newBuilding,
       city: this.newCity
     }
-    this.department.push(department);
+    this.departments.push(department);
   }
 
   deleteDepartment(i: number): void{
-    this.department.splice(i,1);
+    this.departments.splice(i,1);
     this.co--;
   }
 }
 
 
 
-}
+
