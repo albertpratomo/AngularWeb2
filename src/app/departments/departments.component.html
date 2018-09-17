@@ -1,5 +1,64 @@
-<ul>
-<li *ngFor="let department of departments">
-  {{ department }}
-</li>
-</ul>
+<table class="table">
+<button class="btn btn-success btn-block" (click)="open(modalcreate)">
+  <i class="fa fa-plus"></i> <b> Create Department </b>
+</button>  
+<ng-template #modalcreate let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Create Department</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="title">Name</label>
+        <div class="input-group">
+          <input id="department-name" [(ngModel)]="newName" class="form-control" placeholder="Name" name="department-name" >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Building</label>
+        <div class="input-group">
+          <input id="department-building" [(ngModel)]="newBuilding" class="form-control" placeholder="Department Building" name="department-building" >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">City</label>
+        <div class="input-group">
+          <input id="department-city" [(ngModel)]="newCity" class="form-control" placeholder="City" name="department-city" >
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-primary" (click)="createProject()">Create</button>
+  </div>
+</ng-template>
+
+<!------ ------->
+<table class="table table-hover">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Building</th>
+      <th scope="col">City</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!------------->
+    <tr *ngFor="let department of departments; let i = index" (click)="onSelect(department)">
+      <th scope="row">{{ department.id }}</th>
+      <td>{{ department.name }}</td>
+      <td>{{department.building}}</td>
+      <td>{{department.city}}</td>
+
+      <td><app-detaildepartment [selectedDepartment]="selectedDepartment"></app-detaildepartment>
+      <button class="btn btn-sm btn-danger" (click)="deleteDepartment(i)"><i class="fa fa-trash"></i></button> 
+
+      </td>
+    </tr>
+  </tbody>
+</table>

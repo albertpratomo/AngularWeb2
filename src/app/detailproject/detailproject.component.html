@@ -1,0 +1,82 @@
+<button class="btn btn-sm btn-primary" (click)="open(modalview)"><i class="fa fa-eye"></i></button>
+<button class="btn btn-sm btn-info" (click)="open(modaledit)"><i class="fa fa-edit"></i></button>
+
+<ng-template #modalview let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Project Details</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.close('Click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="title">Project ID</label>
+        <div class="input-group">
+        	{{ selectedProject.id }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Project Title</label>
+        <div class="input-group">
+          {{ selectedProject.title }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Project Leader</label>
+        <div class="input-group">
+          {{ selectedProject.leader }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Project Deadline</label>
+        <div class="input-group">
+          {{ selectedProject.deadline }}
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modalview.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
+<ng-template #modaledit let-modaledit>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit Project</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modaledit.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="title">Project ID</label>
+        <div class="input-group">
+          <input id="project-id" [(ngModel)]="selectedProject.id" class="form-control" placeholder="ID" name="project-id" >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Project Title</label>
+        <div class="input-group">
+          <input id="project-title" [(ngModel)]="selectedProject.title" class="form-control" placeholder="Title" name="project-title" >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Project Leader</label>
+        <div class="input-group">
+          <input id="project-leader" [(ngModel)]="selectedProject.leader" class="form-control" placeholder="Leader" name="project-leader" >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Project Deadline</label>
+        <div class="input-group">
+        	<input id="project-deadline" [(ngModel)]="selectedProject.deadline" class="form-control" placeholder="Leader" name="project-deadline" >
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modaledit.close('Save click')">Save</button>
+  </div>
+</ng-template>
