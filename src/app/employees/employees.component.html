@@ -1,7 +1,62 @@
-<h1>{{title}}</h1>
-<p>Employees:</p>
-<ul>
-<li *ngFor="let employee of employees">
-  {{ employee }}
-</li>
-</ul>
+<button class="btn btn-success btn-block" (click)="open(modalcreate)">
+  <i class="fa fa-plus"></i> <b> Create Employee </b>
+</button>  
+<ng-template #modalcreate let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Create Employee</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="title">Employee Name</label>
+        <div class="input-group">
+          <input id="employee-name" [(ngModel)]="newName" class="form-control" placeholder="XXX" name="employee-name" >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Employee Email</label>
+        <div class="input-group">
+          <input id="employee-email" [(ngModel)]="newEmail" class="form-control" placeholder="XXX@XX.com" name="employee-email" >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Employee Phone</label>
+        <div class="input-group">
+          <input id="employee-phone" [(ngModel)]="newPhone" class="form-control" placeholder="xxxxxxx" name="employee-phone" >
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-primary" (click)="createEmployee()">Create</button>
+  </div>
+</ng-template>
+
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th cope="col">Phone</th>
+      <th cope="col">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let employee of employees; let i = index" (click)="onSelect(employee)">
+      <td scope="row">{{employee.id}}</td>
+      <td>{{employee.name}}</td>
+      <td>{{employee.email}}</td>
+      <td>{{employee.phone}}</td>
+      <td><app-detailemployee [selectedEmployee]="selectedEmployee"></app-detailemployee>
+        <button class="btn btn-sm btn-danger" (click)="deleteEmployee(i)"><i class="fa fa-trash"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
