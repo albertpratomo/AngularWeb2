@@ -26,6 +26,10 @@ export class DepartmentService {
 	  return of(this.departments);
 	}
 
+	getDepartmentById(id:number): Department {
+	  return this.departments[id];
+	}
+
 	createDepartment(newName:string, newBuilding:string, newCity:string):void {
 		let newId : number; 
 		if(this.co <= 0){
