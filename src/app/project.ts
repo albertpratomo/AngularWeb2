@@ -3,4 +3,5 @@ export class Project {
   title: string;
   leader: string;
   deadline: string;
+  depid: number;
 }
