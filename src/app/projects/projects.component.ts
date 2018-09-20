@@ -17,11 +17,9 @@ export class ProjectsComponent implements OnInit {
 	newDeadline:string;
 	projects: Project[];
 	selectedProject: Project;
-	co:number;
 
 	ngOnInit() {
 		this.getProjectsFromService();
-		this.co = this.projects.length;
 		this.selectedProject = this.projects[0];
 	}
 
@@ -31,27 +29,19 @@ export class ProjectsComponent implements OnInit {
 		});
 	}
 
-	getProjectsFromService(): void {
-	  this.projectService.getProjects().subscribe(projects => this.projects = projects);
-	}
-
 	onSelect(p: Project): void {
 		this.selectedProject = p;
 	}
 
+	getProjectsFromService(): void {
+	  this.projectService.getProjects().subscribe(projects => this.projects = projects);
+	}
+
 	createProject():void {
-		let p: Project = {
-			id: this.projects[this.co-1].id + 1,
-			title: this.newTitle,
-			leader: this.newLeader,
-			deadline: this.newDeadline
-		}
-		this.projects.push(p);
-		this.co = this.projects.length;
+		this.projectService.createProject(this.newTitle,this.newLeader,this.newDeadline);
 	}
 
 	deleteProject(i: number): void{
-		this.projects.splice(i,1);
-		this.co = this.projects.length;
+		this.projectService.deleteProject(i);
 	}
 }
