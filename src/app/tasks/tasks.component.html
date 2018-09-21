@@ -17,15 +17,15 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="title">Task Member</label>
-        <div class="input-group">
-          <input id="task-member" [(ngModel)]="newMember" class="form-control" placeholder="Member Name" name="task-member" >
-        </div>
-      </div>
-      <div class="form-group">
         <label for="title">Task Deadline</label>
         <div class="input-group">
           <input id="task-deadline" [(ngModel)]="newDeadline" class="form-control" placeholder="DD-MM-YYYY" name="task-deadline" >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Task Project Id</label>
+        <div class="input-group">
+          <input id="task-proid" [(ngModel)]="newProid" class="form-control" placeholder="Proid Number" name="task-proid" >
         </div>
       </div>
     </form>
@@ -40,7 +40,6 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Task Title</th>
-      <th scope="col">Member</th>
       <th scope="col">Deadline</th>
       <th scope="col">Action</th>
     </tr>
@@ -49,7 +48,6 @@
     <tr *ngFor="let task of tasks; let i = index;" (click)="onSelect(task)">
       <th scope="row">{{ task.id }}</th>
       <td>{{task.title }}</td>
-      <td>{{task.member}}</td>
       <td>{{task.deadline}}</td>
       <td><app-detailtask [selectedTask]="selectedTask"></app-detailtask>
         <button class="btn btn-sm btn-danger" (click)="deleteTask(i)"><i class="fa fa-trash"></i></button>
