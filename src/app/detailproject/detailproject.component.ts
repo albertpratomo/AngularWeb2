@@ -14,7 +14,6 @@ export class DetailprojectComponent implements OnInit {
   @Input() selectedProject: Project;
   selectedDepartment: Department;
 
-
   ngOnInit() {
     this.getSelectedDepartment();
   }
