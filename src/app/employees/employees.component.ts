@@ -17,12 +17,10 @@ export class EmployeesComponent implements OnInit {
   newPhone:string;
   employees: Employee[];
   selectedEmployee: Employee;
-  co:number;
 
   ngOnInit() {
     this.getEmployeesFromService();
-    this.co = this.employees.length;
-    this.selectedEmployee= this.employees[0];
+    this.selectedEmployee = this.employees[0];
   }
 
   open(content:any) {
@@ -31,36 +29,21 @@ export class EmployeesComponent implements OnInit {
     });
   }
 
-getEmployeesFromService(): void {
+  onSelect(p: Employee): void {
+    this.selectedEmployee = p;
+  }
+
+  getEmployeesFromService(): void {
     this.employeeService.getEmployees().subscribe(employees => this.employees = employees);
   }
-   
 
-
-
-	onSelect(e: Employee): void {
-		this.selectedEmployee = e;
-	}
-
-createEmployee():void {
-    
-    let e: Employee = {
-      id: this.employees[this.co-1].id+1,
-      name: this.newName,
-      email: this.newEmail,
-      phone: this.newPhone
-    }
-    this.employees.push(e);
+  createEmployee():void {
+    this.employeeService.createEmployee(this.newName,this.newEmail,this.newPhone);
   }
 
   deleteEmployee(i: number): void{
-    this.employees.splice(i,1);
-    this.co = this.employees.length;
+    this.employeeService.deleteEmployee(i);
   }
-
-
-
-
 }
 
 
