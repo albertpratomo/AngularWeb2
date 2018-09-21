@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { TaskService } from '../task.service';
 import { Task } from '../task';
@@ -10,18 +10,18 @@ import { Task } from '../task';
 })
 export class TasksComponent implements OnInit {
 
-  constructor(private modalService: NgbModal,  private taskService: TaskService) { }
+  constructor(private modalService: NgbModal ,  private taskService: TaskService) { }
+
+  newId:string;
   newTitle:string;
-  newMember:string;
   newDeadline:string;
-  tasks:Task[];
-  selectedTask:Task;
-  co:number;
+  newProid:number;
+  tasks: Task[];
+  selectedTask: Task;
 
   ngOnInit() {
-      this.getTasksFromService();
-      this.co = this.tasks.length;
-      this.selectedTask = this.tasks[0];
+    this.getTasksFromService();
+    this.selectedTask = this.tasks[0];
   }
 
   open(content:any) {
@@ -30,31 +30,19 @@ export class TasksComponent implements OnInit {
     });
   }
 
+  onSelect(p: Task): void {
+    this.selectedTask = p;
+  }
+
   getTasksFromService(): void {
     this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
   }
 
-	onSelect(t: Task): void {
-		this.selectedTask = t;
-	}
-
-
   createTask():void {
-    let t: Task = {
-      id: this.tasks[this.co-1].id + 1,
-      title: this.newTitle,
-      member: this.newMember,
-      deadline: this.newDeadline
-    }
-    this.tasks.push(t);
-    this.co = this.tasks.length;
+    this.taskService.createTask(this.newTitle,this.newDeadline,this.newProid);
   }
 
   deleteTask(i: number): void{
-    this.tasks.splice(i,1);
-    this.co = this.tasks.length;
+    this.taskService.deleteTask(i);
   }
-
 }
-
-
