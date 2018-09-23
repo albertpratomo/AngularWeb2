@@ -12,22 +12,25 @@ export class ProjectService {
 
 	constructor() { 
 		this.projects = [
-		{ id: 1, title: 'Web 2 Angular Project', leader: 'Albert', deadline: '30-09-2018', depid: 1 },
-		{ id: 2, title: 'Narco', leader: 'Dayana', deadline: '31-09-2018', depid: 1 },
-		{ id: 3, title: 'Bombasto', leader: 'Wenjia', deadline: '30-09-2018', depid: 2 },
-		{ id: 4, title: 'Celeritas', leader: 'Chao', deadline: '31-09-2018', depid: 3 },
-		{ id: 5, title: 'Magneta', leader: 'Wenjia', deadline: '23-09-2018', depid: 2 },
-		{ id: 6, title: 'RubberMan', leader: 'Albert', deadline: '30-09-2018', depid: 4 },
-		{ id: 7, title: 'Dynama', leader: 'Dayana', deadline: '23-09-2018', depid: 5 },
-		{ id: 8, title: 'Dr IQ', leader: 'Wenjia', deadline: '31-09-2018', depid: 2 },
-		{ id: 9, title: 'Magma', leader: 'Chao', deadline: '23-09-2018', depid: 3 },
-		{ id: 10, title: 'Tornado', leader: 'Dayana', deadline: '31-09-2018', depid: 2 }
+		{ id: 1, title: 'Web 2 Angular', leader: 'Albert', deadline: '30-09-2018', depid: 1 },
+		{ id: 2, title: 'Android 1', leader: 'Dayana', deadline: '31-09-2018', depid: 1 },
+		{ id: 3, title: 'Android 2', leader: 'Wenjia', deadline: '30-09-2018', depid: 2 },
+		{ id: 4, title: 'iOS 1', leader: 'Chao', deadline: '31-09-2018', depid: 3 },
+		{ id: 5, title: 'iOS 2', leader: 'Wenjia', deadline: '23-09-2018', depid: 2 }
 		];
 		this.co = this.projects.length;
 	}
 
 	getProjects(): Observable<Project[]> {
 	  return of(this.projects);
+	}
+
+	getProjectById(id:number): Project {
+	  return this.projects[id];
+	}
+
+	getProjectNameById(id:number): string {
+	  return this.projects[id].title;
 	}
 
 	createProject(newTitle:string, newLeader:string, newDeadline:string):void {

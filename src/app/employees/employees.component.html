@@ -53,8 +53,8 @@
       <td>{{employee.name}}</td>
       <td>{{employee.email}}</td>
       <td>{{employee.phone}}</td>
-      <td>{{employee.depid}}</td>
-      <td><app-detailemployee [selectedEmployee]="selectedEmployee"></app-detailemployee>
+      <td>{{getDepartmentNameById(employee.depid)}}</td>
+      <td><app-detailemployee [selectedEmployeeId]="employee.id"></app-detailemployee>
         <button class="btn btn-sm btn-danger" (click)="deleteEmployee(i)"><i class="fa fa-trash"></i></button>
       </td>
     </tr>

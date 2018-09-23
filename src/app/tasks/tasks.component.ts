@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { TaskService } from '../task.service';
 import { Task } from '../task';
+import { ProjectService } from '../project.service';
+
 
 @Component({
   selector: 'app-tasks',
@@ -10,7 +12,7 @@ import { Task } from '../task';
 })
 export class TasksComponent implements OnInit {
 
-  constructor(private modalService: NgbModal ,  private taskService: TaskService) { }
+  constructor(private modalService: NgbModal ,  private taskService: TaskService, private projectService: ProjectService) { }
 
   newId:string;
   newTitle:string;
@@ -44,5 +46,9 @@ export class TasksComponent implements OnInit {
 
   deleteTask(i: number): void{
     this.taskService.deleteTask(i);
+  }
+
+  getProjectNameById(i:number): string{
+    return this.projectService.getProjectNameById(i-1);
   }
 }

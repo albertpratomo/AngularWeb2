@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../employee';
+import { DepartmentService } from '../department.service';
 
 @Component({
   selector: 'app-employees',
@@ -10,7 +11,7 @@ import { Employee } from '../employee';
 })
 export class EmployeesComponent implements OnInit {
 
-  constructor(private modalService: NgbModal ,  private employeeService: EmployeeService) { }
+  constructor(private modalService: NgbModal ,  private employeeService: EmployeeService, private departmentService: DepartmentService) { }
 
   newName:string;
   newEmail:string;
@@ -43,6 +44,10 @@ export class EmployeesComponent implements OnInit {
 
   deleteEmployee(i: number): void{
     this.employeeService.deleteEmployee(i);
+  }
+
+  getDepartmentNameById(i:number): string{
+    return this.departmentService.getDepartmentNameById(i-1);
   }
 }
 

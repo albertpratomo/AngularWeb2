@@ -54,7 +54,7 @@
       <td>{{department.building}}</td>
       <td>{{department.city}}</td>
 
-      <td><app-detaildepartment [selectedDepartment]="selectedDepartment"></app-detaildepartment>
+      <td><app-detaildepartment [selectedDepartmentId]="department.id"></app-detaildepartment>
       <button class="btn btn-sm btn-danger" (click)="deleteDepartment(i)"><i class="fa fa-trash"></i></button> 
 
       </td>

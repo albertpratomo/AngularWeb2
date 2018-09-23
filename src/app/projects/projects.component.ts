@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { ProjectService } from '../project.service';
 import { Project } from '../project';
+import { DepartmentService } from '../department.service';
 
 @Component({
 	selector: 'app-projects',
@@ -10,7 +11,7 @@ import { Project } from '../project';
 })
 export class ProjectsComponent implements OnInit {
 
-	constructor(private modalService: NgbModal ,  private projectService: ProjectService) { }
+	constructor(private modalService: NgbModal ,  private projectService: ProjectService, private departmentService: DepartmentService) { }
 
 	newTitle:string;
 	newLeader:string;
@@ -44,4 +45,8 @@ export class ProjectsComponent implements OnInit {
 	deleteProject(i: number): void{
 		this.projectService.deleteProject(i);
 	}
+
+	getDepartmentNameById(i:number): string{
+	    return this.departmentService.getDepartmentNameById(i-1);
+	  }
 }
