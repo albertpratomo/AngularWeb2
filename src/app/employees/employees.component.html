@@ -1,3 +1,4 @@
+<h3>Employees</h3>
 <button class="btn btn-success btn-block" (click)="open(modalcreate)">
   <i class="fa fa-plus"></i> <b> Create Employee </b>
 </button>  
@@ -53,8 +54,8 @@
       <td>{{employee.name}}</td>
       <td>{{employee.email}}</td>
       <td>{{employee.phone}}</td>
-      <td>{{employee.depid}}</td>
-      <td><app-detailemployee [selectedEmployee]="selectedEmployee"></app-detailemployee>
+      <td>{{getDepartmentNameById(employee.depid)}}</td>
+      <td><app-detailemployee [selectedEmployeeId]="employee.id"></app-detailemployee>
         <button class="btn btn-sm btn-danger" (click)="deleteEmployee(i)"><i class="fa fa-trash"></i></button>
       </td>
     </tr>

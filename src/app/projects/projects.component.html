@@ -1,3 +1,4 @@
+<h3>Projects</h3>
 <!-- NEW PROJECT MODAL -->
 <button class="btn btn-success btn-block" (click)="open(modalcreate)">
   <i class="fa fa-plus"></i> <b> Create Project </b>
@@ -44,6 +45,7 @@
       <th scope="col">Project Title</th>
       <th scope="col">Leader</th>
       <th scope="col">Deadline</th>
+      <th scope="col">Department</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -53,6 +55,7 @@
       <td>{{ project.title }}</td>
       <td>{{ project.leader }}</td>
       <td>{{ project.deadline }}</td>
+      <td>{{ getDepartmentNameById(project.depid) }}</td>
       <td>
         <app-detailproject [selectedProject]="selectedProject"></app-detailproject>
         <button class="btn btn-sm btn-danger" (click)="deleteProject(i)"><i class="fa fa-trash"></i></button>

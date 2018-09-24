@@ -30,6 +30,21 @@ export class EmployeeService {
       return of(this.employees);
     }
 
+    getEmployeeById(id:number): Employee {
+      return this.employees[id];
+    }
+
+    getEmployeesNamesByDepId(id:number): string[] {
+      let names : string[] = [];
+      for (let employee of this.employees){
+          if (employee.depid == id) {
+              names.push(employee.name);
+          }
+      }
+      console.log(names);
+      return names;
+    }
+
     createEmployee(newName:string, newEmail:string, newPhone:string):void {
         let newId : number; 
         if(this.co <= 0){
