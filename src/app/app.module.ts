@@ -19,6 +19,8 @@ import { DetailemployeeComponent } from './detailemployee/detailemployee.compone
 import { DetailtaskComponent } from './detailtask/detailtask.component';
 import { DetaildepartmentComponent } from './detaildepartment/detaildepartment.component';
 import { DetailprojectComponent } from './detailproject/detailproject.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -33,13 +35,15 @@ import { DetailprojectComponent } from './detailproject/detailproject.component'
     DetailemployeeComponent,
     DetailtaskComponent,
     DetaildepartmentComponent,
-    DetailprojectComponent
+    DetailprojectComponent,
+    DashboardComponent
   ],
   imports: [
     NgbModule,
     BrowserModule,
     FormsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
