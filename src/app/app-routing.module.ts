@@ -6,6 +6,10 @@ import { DepartmentsComponent }      from './departments/departments.component';
 import { ProjectsComponent }      from './projects/projects.component';
 import { TasksComponent }      from './tasks/tasks.component';
 
+import { DetailemployeeComponent } from './detailemployee/detailemployee.component';
+import { DetailtaskComponent } from './detailtask/detailtask.component';
+import { DetaildepartmentComponent } from './detaildepartment/detaildepartment.component';
+import { DetailprojectComponent } from './detailproject/detailproject.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -14,6 +18,7 @@ const routes: Routes = [
 	{ path: 'employees', component: EmployeesComponent },
 	{ path: 'projects', component: ProjectsComponent },
 	{ path: 'tasks', component: TasksComponent },
+	{ path: 'department/:id', component: DetaildepartmentComponent },
 ];
 
 @NgModule({

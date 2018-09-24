@@ -2,7 +2,7 @@
 <div class="row dashboard">
 	<div class="col-3">
 		<div class="list-group">
-			<a href="/departments" class="list-group-item list-group-item-primary"><b>Departments</b></a>
+			<a routerLink="/departments" class="list-group-item list-group-item-primary"><b>Departments</b></a>
 			<a *ngFor="let department of departments" class="list-group-item list-group-item-action">
 				<span class="badge-id">{{department.id}}</span>
 				{{department.name}}
@@ -11,7 +11,7 @@
 	</div>
 	<div class="col-3">
 		<div class="list-group">
-			<a href="/employees" class="list-group-item list-group-item-success"><b>Employees</b></a>
+			<a routerLink="/employees" class="list-group-item list-group-item-success"><b>Employees</b></a>
 			<a *ngFor="let employee of employees" class="list-group-item list-group-item-action">
 				<span class="badge-id">{{employee.id}}</span>
 				{{employee.name}}
@@ -20,7 +20,7 @@
 	</div>
 	<div class="col-3">
 		<div class="list-group">
-			<a href="/projects" class="list-group-item list-group-item-info"><b>Projects</b></a>
+			<a routerLink="/projects" class="list-group-item list-group-item-info"><b>Projects</b></a>
 			<a *ngFor="let project of projects" class="list-group-item list-group-item-action">
 				<span class="badge-id">{{project.id}}</span>
 				{{project.title}}
@@ -29,7 +29,7 @@
 	</div>
 	<div class="col-3">
 		<div class="list-group">
-			<a href="/tasks" class="list-group-item list-group-item-warning"><b>Tasks</b></a>
+			<a routerLink="/tasks" class="list-group-item list-group-item-warning"><b>Tasks</b></a>
 			<a *ngFor="let task of tasks" class="list-group-item list-group-item-action">
 				<span class="badge-id">{{task.id}}</span>
 				{{task.title}}

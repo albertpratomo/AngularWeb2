@@ -12,16 +12,16 @@ export class EmployeeService {
 
     constructor() { 
         this.employees = [
-        { id: 1, name: 'Mr. Nice',email:'coco@gmail.com',phone:'1234567890',depid: 1},
-        { id: 2, name: 'Nao', email:'coco@gmail.com',phone:'1234567890',depid: 2},
-        { id: 3, name: 'Bombasto', email:'coco@gmail.com',phone:'1234567890',depid: 5},
-        { id: 4, name: 'Celeritas', email:'coco@gmail.com',phone:'1234567890',depid: 2},
-        { id: 5, name: 'Magneta', email:'coco@gmail.com',phone:'1234567890',depid: 3},
-        { id: 6, name: 'RubberMan', email:'coco@gmail.com',phone:'1234567890',depid: 5},
-        { id: 7, name: 'Dznama', email:'coco@gmail.com',phone:'1234567890',depid: 2},
-        { id: 8, name: 'Dr IQ', email:'coco@gmail.com',phone:'1234567890',depid: 4},
-        { id: 9, name: 'Magma', email:'coco@gmail.com',phone:'1234567890',depid: 1},
-        { id: 10, name: 'Tornado', email:'coco@gmail.com',phone:'1234567890',depid: 4}
+        { id: 1, name: 'Emp 1',email:'coco@gmail.com',phone:'1234567890',depid: 1},
+        { id: 2, name: 'Emp 2', email:'coco@gmail.com',phone:'1234567890',depid: 2},
+        { id: 3, name: 'Emp 3', email:'coco@gmail.com',phone:'1234567890',depid: 5},
+        { id: 4, name: 'Emp 4', email:'coco@gmail.com',phone:'1234567890',depid: 2},
+        { id: 5, name: 'Emp 5', email:'coco@gmail.com',phone:'1234567890',depid: 3},
+        { id: 6, name: 'Emp 6', email:'coco@gmail.com',phone:'1234567890',depid: 5},
+        { id: 7, name: 'Emp 7', email:'coco@gmail.com',phone:'1234567890',depid: 2},
+        { id: 8, name: 'Emp 8', email:'coco@gmail.com',phone:'1234567890',depid: 4},
+        { id: 9, name: 'Emp 9', email:'coco@gmail.com',phone:'1234567890',depid: 1},
+        { id: 10, name: 'Emp 10', email:'coco@gmail.com',phone:'1234567890',depid: 4}
         ];
         this.co = this.employees.length;
     }
@@ -34,6 +34,10 @@ export class EmployeeService {
       return this.employees[id];
     }
 
+    getEmployeeNameById(id:number): string {
+      return this.employees[id].name;
+    }
+
     getEmployeesNamesByDepId(id:number): string[] {
       let names : string[] = [];
       for (let employee of this.employees){
@@ -41,7 +45,7 @@ export class EmployeeService {
               names.push(employee.name);
           }
       }
-      console.log(names);
+      // console.log(names);
       return names;
     }
 

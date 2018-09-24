@@ -40,6 +40,18 @@
           {{ selectedDepartment.name }}
         </div>
       </div>
+      <div class="form-group">
+        <label for="title">Project Members</label>
+        <div class="input-group" *ngFor="let empname of empnames">
+          {{ empname }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Project Tasks</label>
+        <div class="input-group" *ngFor="let tasktitle of tasktitles">
+          {{ tasktitle }}
+        </div>
+      </div>
     </form>
   </div>
   <div class="modal-footer">
