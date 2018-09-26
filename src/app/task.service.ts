@@ -30,6 +30,16 @@ export class TaskService {
     return of(this.tasks);
   }
 
+  getTaskTitlesByProid(id:number): string[] {
+    let titles : string[] = [];
+    for (let task of this.tasks){
+        if (task.proid == id) {
+            titles.push(task.title);
+        }
+    }
+    return titles;
+  }
+
   createTask(newTitle:string, newDeadline:string,newProid:number):void {
     let newId : number; 
     if(this.co <= 0){
