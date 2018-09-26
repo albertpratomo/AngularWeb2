@@ -30,6 +30,10 @@ export class TaskService {
     return of(this.tasks);
   }
 
+  getTaskById(id: number): Observable<Task> {
+    return of(this.tasks.find(task => task.id === id));
+  }
+
   getTaskTitlesByProid(id:number): string[] {
     let titles : string[] = [];
     for (let task of this.tasks){

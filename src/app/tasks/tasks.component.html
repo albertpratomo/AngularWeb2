@@ -52,7 +52,10 @@
       <td>{{task.title }}</td>
       <td>{{task.deadline}}</td>
       <td>{{getProjectNameById(task.proid)}}</td>
-      <td><app-detailtask [selectedTask]="selectedTask"></app-detailtask>
+      <td>
+        
+      <a  routerLink="/task/{{task.id}}"><button class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></button></a>
+
         <button class="btn btn-sm btn-danger" (click)="deleteTask(i)"><i class="fa fa-trash"></i></button>
    </td>
     </tr>
