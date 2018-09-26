@@ -34,6 +34,10 @@ export class EmployeeService {
       return this.employees[id];
     }
 
+    getEmployeeById(id: number): Observable<Employee> {
+      return of(this.employees.find(employee => employee.id === id));
+    }
+
     getEmployeeNameById(id:number): string {
       return this.employees[id].name;
     }
