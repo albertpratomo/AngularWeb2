@@ -49,7 +49,7 @@ export class DetailprojectComponent implements OnInit {
   }
 
   getSelectedDepartment(): void{
-    this.selectedDepartment = this.departmentService.getDepartmentById(this.selectedProject.depid-1);
+    this.departmentService.getDepartmentById(this.selectedProject.depid).subscribe(department => this.selectedDepartment = department);
   }
 
   getEmpnamesByProid(): void{

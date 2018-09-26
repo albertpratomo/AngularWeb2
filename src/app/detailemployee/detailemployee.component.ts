@@ -43,7 +43,8 @@ export class DetailemployeeComponent implements OnInit {
   }
 
   getSelectedDepartment(): void{
-    this.selectedDepartment = this.departmentService.getDepartmentById(this.selectedEmployee.depid-1);
+    // this.selectedDepartment = this.departmentService.getDepartmentById(this.selectedEmployee.depid-1);
+    this.departmentService.getDepartmentById(this.selectedEmployee.depid).subscribe(department => this.selectedDepartment = department);
   }
 
   getProtitlesByEmpid(): void{

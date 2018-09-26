@@ -1,4 +1,7 @@
-.modal-body label {
+h3 {
+	margin-bottom: 30px;
+}
+.form-group label {
     font-size: 14px;
     font-weight: bold;
     margin-bottom:0;
@@ -6,4 +9,5 @@
 
 button.btn-sm {
     margin-right: 5px;
+    font-weight: bold;
 }
