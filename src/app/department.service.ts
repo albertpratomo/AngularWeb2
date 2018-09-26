@@ -26,8 +26,8 @@ export class DepartmentService {
 	  return of(this.departments);
 	}
 
-	getDepartmentById(id:number): Department {
-	  return this.departments[id];
+	getDepartmentById(id:number): Observable<Department> {
+	  return of(this.departments.find(department => department.id === id));
 	}
 
 	getDepartmentNameById(id:number): string {

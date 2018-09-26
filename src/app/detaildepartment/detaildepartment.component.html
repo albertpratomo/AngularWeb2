@@ -1,15 +1,19 @@
-<button class="btn btn-sm btn-primary" (click)="open(modalview)"><i class="fa fa-eye"></i></button>
-<button class="btn btn-sm btn-info" (click)="open(modaledit)"><i class="fa fa-edit"></i></button>
-
- <ng-template #modalview let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Department details</h4>
-    <button type="button" class="close" aria-label="Close" (click)="close(modalview)">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form>
+<div class="row justify-content-center">
+  <div class="col-8">
+    <h3 class="row justify-content-between">
+      Department {{ selectedDepartment.id }}
+      <div class="col-3">
+        <button class="btn btn-sm btn-success col-4" (click)="goBack()">
+          <i class="fa fa-arrow-left"></i>
+        </button>
+        <button class="btn btn-sm btn-danger col-4" (click)="deleteDepartment()">
+          <i class="fa fa-trash"></i>
+        </button>
+      </div>
+    </h3>
+    <div class="row">
+      <div class="col-6">
+        <form>
       <div class="form-group">
         <label for="title">ID</label>
         <div class="input-group">
@@ -34,20 +38,26 @@
           {{ selectedDepartment.city }}
         </div>
       </div>
-      <div class="form-group">
+     
+    </form>
+         
+      </div>
+      <div class="col-6">
+         <div class="form-group">
         <label for="title">Employees</label>
         <div class="input-group" *ngFor="let name of names">
           {{ name }}
         </div>
       </div>
-    </form>
+      </div>
+    </div>
   </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-  </div>
-</ng-template>
+</div>
 
-<ng-template #modaledit let-modal>
+
+
+
+<!-- <ng-template #modaledit let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Edit Department</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -85,4 +95,4 @@
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
   </div>
-</ng-template>
+</ng-template> -->

@@ -55,7 +55,8 @@
       <td>{{department.building}}</td>
       <td>{{department.city}}</td>
 
-      <td><app-detaildepartment [selectedDepartmentId]="department.id"></app-detaildepartment>
+      <td><a  routerLink="/department/{{department.id}}"><button class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></button></a>
+
       <button class="btn btn-sm btn-danger" (click)="deleteDepartment(i)"><i class="fa fa-trash"></i></button> 
 
       </td>
