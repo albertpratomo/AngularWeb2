@@ -7,6 +7,9 @@ import { Department } from '../department';
 import { ProjectService } from '../project.service';
 import { EmpprjService } from '../empprj.service';
 
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-detailemployee',
   templateUrl: './detailemployee.component.html',
@@ -15,28 +18,34 @@ import { EmpprjService } from '../empprj.service';
 
 export class DetailemployeeComponent implements OnInit {
 
-	@Input() selectedEmployeeId: number;
+  selectedEmployeeId: number;
   selectedEmployee: Employee;
   selectedDepartment: Department;
   projecttitles: string[] = [];
 
   ngOnInit() {
-    this.getSelectedEmployee();
+    this.selectedEmployeeId = +this.route.snapshot.paramMap.get('id');
+    this.getSelectedEmployee(this.selectedEmployeeId);
     this.getProtitlesByEmpid();
+
   }
 
-	constructor(private modalService: NgbModal, private departmentService: DepartmentService, private employeeService: EmployeeService, private projectService: ProjectService, private empprjService: EmpprjService) { }
+	constructor(
+    private modalService: NgbModal, 
+    private departmentService: DepartmentService, 
+    private employeeService: EmployeeService, 
+    private projectService: ProjectService, 
+    private empprjService: EmpprjService
+    private route: ActivatedRoute,
+    private location: Location
+    ) { }
 	
-	open(content:any) {
-    this.getSelectedDepartment();
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-    }, (reason) => {
-    });
+
+  getSelectedEmployee(id: number){
+    this.employeeService.getEmployeeById(id).subscribe(employee => this.selectedEmployee = employee);
   }
 
-  getSelectedEmployee(): void{
-    this.selectedEmployee = this.employeeService.getEmployeeById(this.selectedEmployeeId-1);
-  }
+  
 
   getDepartmentNameById(i:number): string{
     return this.departmentService.getDepartmentNameById(i-1);
@@ -55,5 +64,13 @@ export class DetailemployeeComponent implements OnInit {
       title = this.projectService.getProjectNameById(proid-1);
       this.projecttitles.push(title);
     }
+  }
+  goBack(): void {
+    this.location.back();
+  }
+
+  deleteEmployee(): void{
+    this.employeeService.deleteEmployee(this.selectedEmployeeId-1);
+    this.goBack();
   }
 }

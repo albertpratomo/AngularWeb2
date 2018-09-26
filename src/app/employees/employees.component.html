@@ -55,7 +55,8 @@
       <td>{{employee.email}}</td>
       <td>{{employee.phone}}</td>
       <td>{{getDepartmentNameById(employee.depid)}}</td>
-      <td><app-detailemployee [selectedEmployeeId]="employee.id"></app-detailemployee>
+      <td>
+        <a  routerLink="/employee/{{employee.id}}"><button class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></button></a>
         <button class="btn btn-sm btn-danger" (click)="deleteEmployee(i)"><i class="fa fa-trash"></i></button>
       </td>
     </tr>
