@@ -8,6 +8,9 @@ import { EmpprjService } from '../empprj.service';
 import { EmployeeService } from '../employee.service';
 import { TaskService } from '../task.service';
 
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-detailproject',
   templateUrl: './detailproject.component.html',
@@ -15,7 +18,7 @@ import { TaskService } from '../task.service';
 })
 export class DetailprojectComponent implements OnInit {
 
-  @Input() selectedProjectId: number;
+  selectedProjectId: number;
   selectedProject: Project;
   selectedDepartment: Department;
   empids: number[] = [];
@@ -23,23 +26,26 @@ export class DetailprojectComponent implements OnInit {
   tasktitles: string[] = [];
 
   ngOnInit() {
+    this.selectedProjectId = +this.route.snapshot.paramMap.get('id');
     this.getSelectedProject(this.selectedProjectId);
     this.getSelectedDepartment();
     this.getTaskTitlesByProid(this.selectedProjectId);
     this.getEmpnamesByProid();
   }
 
-  constructor(private modalService: NgbModal, private departmentService: DepartmentService, private empprjService: EmpprjService, private employeeService: EmployeeService, private projectService: ProjectService, private taskService: TaskService) {}
-
-  open(content) {
-    this.getSelectedDepartment();
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-    }, (reason) => {
-    });
-  }
+  constructor(
+    private modalService: NgbModal, 
+    private departmentService: DepartmentService, 
+    private empprjService: EmpprjService, 
+    private employeeService: EmployeeService, 
+    private projectService: ProjectService, 
+    private taskService: TaskService,
+    private route: ActivatedRoute,
+    private location: Location
+    ) {}
 
   getSelectedProject(id: number){
-    this.selectedProject = this.projectService.getProjectById(id-1);
+    this.projectService.getProjectById(id).subscribe(project => this.selectedProject = project);
   }
 
   getSelectedDepartment(): void{
@@ -58,5 +64,14 @@ export class DetailprojectComponent implements OnInit {
 
   getTaskTitlesByProid(id:number): void{
     this.tasktitles = this.taskService.getTaskTitlesByProid(id);
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+
+  deleteProject(): void{
+    this.projectService.deleteProject(this.selectedProjectId-1);
+    this.goBack();
   }
 }

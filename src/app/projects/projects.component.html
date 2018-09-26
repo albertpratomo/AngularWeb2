@@ -57,7 +57,8 @@
       <td>{{ project.deadline }}</td>
       <td>{{ getDepartmentNameById(project.depid) }}</td>
       <td>
-        <app-detailproject [selectedProjectId]="project.id"></app-detailproject>
+        <!-- <app-detailproject [selectedProjectId]="project.id"></app-detailproject> -->
+        <a  routerLink="/project/{{project.id}}"><button class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></button></a>
         <button class="btn btn-sm btn-danger" (click)="deleteProject(i)"><i class="fa fa-trash"></i></button>
       </td>
     </tr>

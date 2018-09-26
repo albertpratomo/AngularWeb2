@@ -3,7 +3,7 @@
 	<div class="col-3">
 		<div class="list-group">
 			<a routerLink="/departments" class="list-group-item list-group-item-primary"><b>Departments</b></a>
-			<a *ngFor="let department of departments" class="list-group-item list-group-item-action">
+			<a routerLink="/department/{{department.id}}" *ngFor="let department of departments" class="list-group-item list-group-item-action">
 				<span class="badge-id">{{department.id}}</span>
 				{{department.name}}
 			</a>		
@@ -12,7 +12,7 @@
 	<div class="col-3">
 		<div class="list-group">
 			<a routerLink="/employees" class="list-group-item list-group-item-success"><b>Employees</b></a>
-			<a *ngFor="let employee of employees" class="list-group-item list-group-item-action">
+			<a routerLink="/employee/{{employee.id}}" *ngFor="let employee of employees" class="list-group-item list-group-item-action">
 				<span class="badge-id">{{employee.id}}</span>
 				{{employee.name}}
 			</a>		
@@ -21,7 +21,7 @@
 	<div class="col-3">
 		<div class="list-group">
 			<a routerLink="/projects" class="list-group-item list-group-item-info"><b>Projects</b></a>
-			<a *ngFor="let project of projects" class="list-group-item list-group-item-action">
+			<a routerLink="/project/{{project.id}}" *ngFor="let project of projects" class="list-group-item list-group-item-action">
 				<span class="badge-id">{{project.id}}</span>
 				{{project.title}}
 			</a>		
@@ -30,7 +30,7 @@
 	<div class="col-3">
 		<div class="list-group">
 			<a routerLink="/tasks" class="list-group-item list-group-item-warning"><b>Tasks</b></a>
-			<a *ngFor="let task of tasks" class="list-group-item list-group-item-action">
+			<a routerLink="/task/{{task.id}}" *ngFor="let task of tasks" class="list-group-item list-group-item-action">
 				<span class="badge-id">{{task.id}}</span>
 				{{task.title}}
 			</a>		
