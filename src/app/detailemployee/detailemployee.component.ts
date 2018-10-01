@@ -35,7 +35,7 @@ export class DetailemployeeComponent implements OnInit {
     private departmentService: DepartmentService, 
     private employeeService: EmployeeService, 
     private projectService: ProjectService, 
-    private empprjService: EmpprjService
+    private empprjService: EmpprjService,
     private route: ActivatedRoute,
     private location: Location
     ) { }
@@ -44,8 +44,6 @@ export class DetailemployeeComponent implements OnInit {
   getSelectedEmployee(id: number){
     this.employeeService.getEmployeeById(id).subscribe(employee => this.selectedEmployee = employee);
   }
-
-  
 
   getDepartmentNameById(i:number): string{
     return this.departmentService.getDepartmentNameById(i-1);

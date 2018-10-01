@@ -18,10 +18,11 @@ export class DetaildepartmentComponent implements OnInit {
   names : string[];
 
   ngOnInit() {
-     this.selectedDepartmentId = +this.route.snapshot.paramMap.get('id');
+    this.selectedDepartmentId = +this.route.snapshot.paramMap.get('id');
     this.getSelectedDepartment(this.selectedDepartmentId);
+    this.getEmployeesNamesByDepId(this.selectedDepartmentId);
   }
- 
+  
   constructor(
     private modalService: NgbModal, 
     private employeeService: EmployeeService,
@@ -30,15 +31,7 @@ export class DetaildepartmentComponent implements OnInit {
     private location: Location
     ) {}
 
-  open(content:any) {
-    this.getEmployeesNamesByDepId(this.selectedDepartment.id);
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      
-    }, (reason) => {
-    });
-  }
-
- getSelectedDepartment(id: number){
+  getSelectedDepartment(id: number){
     this.departmentService.getDepartmentById(id).subscribe(department => this.selectedDepartment = department);
   }
   getEmployeesNamesByDepId(id:number): void {
@@ -51,5 +44,5 @@ export class DetaildepartmentComponent implements OnInit {
   deleteDepartment(): void{
     this.departmentService.deleteDepartment(this.selectedDepartmentId-1);
     this.goBack();
-}
+  }
 }

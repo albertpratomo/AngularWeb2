@@ -3,6 +3,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { ProjectService } from '../project.service';
 import { Project } from '../project';
 import { DepartmentService } from '../department.service';
+import { FilterPipe} from '../filter.pipe';
 
 @Component({
 	selector: 'app-projects',

@@ -1,5 +1,6 @@
 <h3>Projects</h3>
 <!-- NEW PROJECT MODAL -->
+<input [(ngModel)]="searchText" placeholder="search text goes here">
 <button class="btn btn-success btn-block" (click)="open(modalcreate)">
   <i class="fa fa-plus"></i> <b> Create Project </b>
 </button>  
@@ -50,7 +51,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let project of projects; let i = index;" (click)="onSelect(project)">
+    <tr *ngFor="let project of projects | filter : searchText; let i = index;" (click)="onSelect(project)">
       <th scope="row">{{ project.id }}</th>
       <td>{{ project.title }}</td>
       <td>{{ project.leader }}</td>
