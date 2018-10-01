@@ -30,10 +30,6 @@ export class EmployeeService {
       return of(this.employees);
     }
 
-    getEmployeeById(id:number): Employee {
-      return this.employees[id];
-    }
-
     getEmployeeById(id: number): Observable<Employee> {
       return of(this.employees.find(employee => employee.id === id));
     }

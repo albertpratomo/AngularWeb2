@@ -39,8 +39,9 @@ export class DetailtaskComponent implements OnInit {
 
 
   getSelectedProject(){
-    this.projectService.getProjectById(this.selectedTask.proid-1).subscribe(project => this.selectedProject = project);
+    this.projectService.getProjectById(this.selectedTask.proid).subscribe(project => this.selectedProject = project);
   }
+
   goBack(): void {
     this.location.back();
   }
