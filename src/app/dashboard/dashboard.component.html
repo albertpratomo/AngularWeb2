@@ -1,36 +1,40 @@
 <h3>Dashboard</h3>
 <div class="row dashboard">
 	<div class="col-3">
+	    <input [(ngModel)]="searchD" class="form-control" placeholder="Search Departments">
 		<div class="list-group">
 			<a routerLink="/departments" class="list-group-item list-group-item-primary"><b>Departments</b></a>
-			<a routerLink="/department/{{department.id}}" *ngFor="let department of departments" class="list-group-item list-group-item-action">
+			<a routerLink="/department/{{department.id}}" *ngFor="let department of departments | filter : searchD" class="list-group-item list-group-item-action">
 				<span class="badge-id">{{department.id}}</span>
 				{{department.name}}
 			</a>		
 		</div>
 	</div>
 	<div class="col-3">
+		<input [(ngModel)]="searchE" class="form-control" placeholder="Search Employees">
 		<div class="list-group">
 			<a routerLink="/employees" class="list-group-item list-group-item-success"><b>Employees</b></a>
-			<a routerLink="/employee/{{employee.id}}" *ngFor="let employee of employees" class="list-group-item list-group-item-action">
+			<a routerLink="/employee/{{employee.id}}" *ngFor="let employee of employees | filter : searchE" class="list-group-item list-group-item-action">
 				<span class="badge-id">{{employee.id}}</span>
 				{{employee.name}}
 			</a>		
 		</div>
 	</div>
 	<div class="col-3">
+		<input [(ngModel)]="searchP" class="form-control" placeholder="Search Projects">
 		<div class="list-group">
 			<a routerLink="/projects" class="list-group-item list-group-item-info"><b>Projects</b></a>
-			<a routerLink="/project/{{project.id}}" *ngFor="let project of projects" class="list-group-item list-group-item-action">
+			<a routerLink="/project/{{project.id}}" *ngFor="let project of projects | filter : searchP" class="list-group-item list-group-item-action">
 				<span class="badge-id">{{project.id}}</span>
 				{{project.title}}
 			</a>		
 		</div>
 	</div>
 	<div class="col-3">
+		<input [(ngModel)]="searchT" class="form-control" placeholder="Search Tasks">
 		<div class="list-group">
 			<a routerLink="/tasks" class="list-group-item list-group-item-warning"><b>Tasks</b></a>
-			<a routerLink="/task/{{task.id}}" *ngFor="let task of tasks" class="list-group-item list-group-item-action">
+			<a routerLink="/task/{{task.id}}" *ngFor="let task of tasks | filter : searchT" class="list-group-item list-group-item-action">
 				<span class="badge-id">{{task.id}}</span>
 				{{task.title}}
 			</a>		

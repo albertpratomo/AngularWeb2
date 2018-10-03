@@ -5,6 +5,7 @@ import { EmployeesComponent }      from './employees/employees.component';
 import { DepartmentsComponent }      from './departments/departments.component';
 import { ProjectsComponent }      from './projects/projects.component';
 import { TasksComponent }      from './tasks/tasks.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 import { DetailemployeeComponent } from './detailemployee/detailemployee.component';
 import { DetailtaskComponent } from './detailtask/detailtask.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
 	{ path: 'employees', component: EmployeesComponent },
 	{ path: 'projects', component: ProjectsComponent },
 	{ path: 'tasks', component: TasksComponent },
+	{ path: 'calendar', component: CalendarComponent },
 	{ path: 'department/:id', component: DetaildepartmentComponent },
 	{ path: 'employee/:id', component: DetailemployeeComponent },
 	{ path: 'project/:id', component: DetailprojectComponent },
