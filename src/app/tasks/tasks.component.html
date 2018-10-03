@@ -1,7 +1,13 @@
 <h3>Tasks</h3>
-<button class="btn btn-success btn-block" (click)="open(modalcreate)">
+
+  <div class="row form-inline justify-content-between">
+    <input [(ngModel)]="searchText" class="form-control col-3" placeholder="Search Task">
+<button class="btn btn-success col-3" (click)="open(modalcreate)">
   <i class="fa fa-plus"></i> <b> Create Task </b>
 </button>  
+</div>
+
+
 <ng-template #modalcreate let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Create Task</h4>
@@ -47,7 +53,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let task of tasks; let i = index;" (click)="onSelect(task)">
+    <tr *ngFor="let task of tasks | filter : searchText; let i = index;" (click)="onSelect(task)">
       <th scope="row">{{ task.id }}</th>
       <td>{{task.title }}</td>
       <td>{{task.deadline}}</td>
