@@ -1,7 +1,11 @@
 <h3>Employees</h3>
-<button class="btn btn-success btn-block" (click)="open(modalcreate)">
+
+<div class="row form-inline justify-content-between">
+    <input [(ngModel)]="searchText" class="form-control col-3" placeholder="Search Employee">
+<button class="btn btn-success col-3" (click)="open(modalcreate)">
   <i class="fa fa-plus"></i> <b> Create Employee </b>
 </button>  
+</div>
 <ng-template #modalcreate let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Create Employee</h4>
@@ -49,7 +53,7 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let employee of employees; let i = index" (click)="onSelect(employee)">
+    <tr *ngFor="let employee of employees | filter : searchText; let i = index" (click)="onSelect(employee)">
       <th scope="row">{{employee.id}}</th>
       <td>{{employee.name}}</td>
       <td>{{employee.email}}</td>
