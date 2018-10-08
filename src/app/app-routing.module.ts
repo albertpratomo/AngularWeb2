@@ -6,6 +6,7 @@ import { DepartmentsComponent }      from './departments/departments.component';
 import { ProjectsComponent }      from './projects/projects.component';
 import { TasksComponent }      from './tasks/tasks.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 import { DetailemployeeComponent } from './detailemployee/detailemployee.component';
 import { DetailtaskComponent } from './detailtask/detailtask.component';
@@ -23,7 +24,9 @@ const routes: Routes = [
 	{ path: 'department/:id', component: DetaildepartmentComponent },
 	{ path: 'employee/:id', component: DetailemployeeComponent },
 	{ path: 'project/:id', component: DetailprojectComponent },
-	{ path: 'task/:id', component: DetailtaskComponent }
+	{ path: 'task/:id', component: DetailtaskComponent },
+	{ path: '404', component: NotfoundComponent },
+	{ path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({
