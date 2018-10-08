@@ -14,29 +14,12 @@ const httpOptions = {
 })
 export class EmployeeService {
 
-    private apiUrl = 'http://i875395.hera.fhict.nl/api/406448/employee';
-
-    // employees : Employee[];
-    // co : number;
+    private apiUrl = 'http://i875395.hera.fhict.nl/api/386125/employee';
 
     constructor(private http: HttpClient)
-   { 
-        // this.employees = [
-        // { id: 1, name: 'Emp 1',email:'coco@gmail.com',phone:'1234567890',depid: 1},
-        // { id: 2, name: 'Emp 2', email:'coco@gmail.com',phone:'1234567890',depid: 2},
-        // { id: 3, name: 'Emp 3', email:'coco@gmail.com',phone:'1234567890',depid: 5},
-        // { id: 4, name: 'Emp 4', email:'coco@gmail.com',phone:'1234567890',depid: 2},
-        // { id: 5, name: 'Emp 5', email:'coco@gmail.com',phone:'1234567890',depid: 3},
-        // { id: 6, name: 'Emp 6', email:'coco@gmail.com',phone:'1234567890',depid: 5},
-        // { id: 7, name: 'Emp 7', email:'coco@gmail.com',phone:'1234567890',depid: 2},
-        // { id: 8, name: 'Emp 8', email:'coco@gmail.com',phone:'1234567890',depid: 4},
-        // { id: 9, name: 'Emp 9', email:'coco@gmail.com',phone:'1234567890',depid: 1},
-        // { id: 10, name: 'Emp 10', email:'coco@gmail.com',phone:'1234567890',depid: 4}
-        // ];
-        // this.co = this.employees.length;
-    }
+     {}
 
-/** GET employeees from the server */
+    /** GET employeees from the server */
     getEmployees (): Observable<Employee[]> {
       return this.http.get<Employee[]>(this.apiUrl)
         .pipe(
@@ -55,7 +38,7 @@ export class EmployeeService {
     }
 
     /** POST: add a new employee to the server */
-    addEmployee (employee: Employee): Observable<Employee> {
+    addEmployee(employee: Employee): Observable<Employee> {
       return this.http.post<Employee>(this.apiUrl, employee, httpOptions).pipe(
         // tap((employee: Employee) => this.log(`added employee w/ id=${employee.id}`)),
         catchError(this.handleError<Employee>('addEmployee'))
@@ -63,7 +46,7 @@ export class EmployeeService {
     }
 
     /** PUT: update the employee on the server */
-    updateEmployee (employee: Employee): Observable<any> {
+    updateEmployee(employee: Employee): Observable<any> {
       const url = `${this.apiUrl}?id=${employee.id}`;
       return this.http.put(url, employee, httpOptions).pipe(
         // tap(_ => this.log(`updated employee id=${employee.id}`)),
@@ -96,6 +79,7 @@ export class EmployeeService {
         // Let the app keep running by returning an empty result.
         return of(result as T);
       };
+    }
     
 
     // getEmployeeNameById(id:number): string {

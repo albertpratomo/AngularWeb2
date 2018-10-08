@@ -1,10 +1,10 @@
 <h3>Tasks</h3>
 
-  <div class="row form-inline justify-content-between">
-    <input [(ngModel)]="searchText" class="form-control col-3" placeholder="Search Task">
-<button class="btn btn-success col-3" (click)="open(modalcreate)">
-  <i class="fa fa-plus"></i> <b> Create Task </b>
-</button>  
+<div class="row form-inline justify-content-between">
+  <input [(ngModel)]="searchText" class="form-control col-3" placeholder="Search Task">
+  <button class="btn btn-success col-3" (click)="open(modalcreate)">
+    <i class="fa fa-plus"></i> <b> Create Task </b>
+  </button>  
 </div>
 
 
@@ -16,29 +16,27 @@
     </button>
   </div>
   <div class="modal-body">
-    <form>
-      <div class="form-group">
-        <label for="title">Task Name</label>
-        <div class="input-group">
-          <input class="form-control" placeholder="Name" #newName>
-        </div>
+    <div class="form-group">
+      <label for="title">Task Name</label>
+      <div class="input-group">
+        <input class="form-control" placeholder="Name" #newTName>
       </div>
-      <div class="form-group">
-        <label for="title">Task Deadline</label>
-        <div class="input-group">
-          <input class="form-control" placeholder="Date" #newDate>          
-        </div>
+    </div>
+    <div class="form-group">
+      <label for="title">Task Deadline</label>
+      <div class="input-group">
+        <input class="form-control" placeholder="Date" #newDDate>          
       </div>
-      <div class="form-group">
-        <label for="title">Department Id</label>
-        <div class="input-group">
-          <input class="form-control" placeholder="Department Id" #newDepId>                   
-        </div>
+    </div>
+    <div class="form-group">
+      <label for="title">Task Deadline</label>
+      <div class="input-group">
+        <input class="form-control" placeholder="Department ID" #newTDepId>          
       </div>
-    </form>
+    </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-primary" (click)="add(newName.value, newDate.value,newDepId.value);newName.value='';newDate.value='';newDepId = ''">Create</button>
+    <button type="button" class="btn btn-outline-primary" (click)="add(newTName.value, newDDate.value, newTDepId.value);newTName.value='';newDDate.value='';newTDepId.value=''">Create</button>
     
   </div>
 </ng-template>
@@ -60,12 +58,12 @@
       <td>{{task.due_date}}</td>
       <td>{{task.department_id}}</td>
       <td>
-        
-      <a  routerLink="/task/{{task.id}}"><button class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></button></a>
+
+        <a  routerLink="/task/{{task.id}}"><button class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></button></a>
 
         <button class="btn btn-sm btn-danger" (click)="deleteTask(task.id)"><i class="fa fa-trash"></i></button>
-   </td>
+      </td>
     </tr>
   </tbody>
 </table>
- 
+

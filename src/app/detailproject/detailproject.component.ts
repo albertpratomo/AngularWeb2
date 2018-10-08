@@ -28,9 +28,9 @@ export class DetailprojectComponent implements OnInit {
   ngOnInit() {
     this.selectedProjectId = +this.route.snapshot.paramMap.get('id');
     this.getSelectedProject(this.selectedProjectId);
-    this.getSelectedDepartment();
-    this.getTaskTitlesByProid(this.selectedProjectId);
-    this.getEmpnamesByProid();
+    // this.getSelectedDepartment();
+    // this.getTaskTitlesByProid(this.selectedProjectId);
+    // this.getEmpnamesByProid();
   }
 
   constructor(
@@ -52,19 +52,19 @@ export class DetailprojectComponent implements OnInit {
     this.departmentService.getDepartmentById(this.selectedProject.depid).subscribe(department => this.selectedDepartment = department);
   }
 
-  getEmpnamesByProid(): void{
-    let id = this.selectedProject.id;
-    this.empids = this.empprjService.getEmpidsByProid(id);
-    for(let empid of this.empids){
-      let empname : string;
-      empname = this.employeeService.getEmployeeNameById(empid-1);
-      this.empnames.push(empname);
-    }
-  }
+  // getEmpnamesByProid(): void{
+  //   let id = this.selectedProject.id;
+  //   this.empids = this.empprjService.getEmpidsByProid(id);
+  //   for(let empid of this.empids){
+  //     let empname : string;
+  //     empname = this.employeeService.getEmployeeNameById(empid-1);
+  //     this.empnames.push(empname);
+  //   }
+  // }
 
-  getTaskTitlesByProid(id:number): void{
-    this.tasktitles = this.taskService.getTaskTitlesByProid(id);
-  }
+  // getTaskTitlesByProid(id:number): void{
+  //   this.tasktitles = this.taskService.getTaskTitlesByProid(id);
+  // }
 
   goBack(): void {
     this.location.back();

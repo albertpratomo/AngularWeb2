@@ -47,7 +47,7 @@ export class ProjectsComponent implements OnInit {
 		this.projectService.deleteProject(i);
 	}
 
-	getDepartmentNameById(i:number): string{
-	    return this.departmentService.getDepartmentNameById(i-1);
-	  }
+	// getDepartmentNameById(i:number): string{
+	//     return this.departmentService.getDepartmentNameById(i-1);
+	//   }
 }

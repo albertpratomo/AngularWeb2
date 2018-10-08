@@ -13,9 +13,6 @@ export class EmployeesComponent implements OnInit {
 
   constructor(private modalService: NgbModal ,  private employeeService: EmployeeService, private departmentService: DepartmentService) { }
 
-  // newName:string;
-  // newEmail:string;
-  // newPhone:string;
   employees: Employee[];
   // selectedEmployee: Employee;
 
@@ -38,27 +35,25 @@ export class EmployeesComponent implements OnInit {
     this.employeeService.getEmployees().subscribe(employees => this.employees = employees);
   }
 
-
-  
-
-  add(name: string, building : string): void {
-    name = name.trim();
-    building = building.trim();
-    if (!name || !building) { return; }
-    this.departmentService.addDepartment({ name, building } as Department)
+  add(first_name: string, last_name: string, birth_date: string, department_id: number): void {
+    first_name = first_name.trim();
+    last_name = last_name.trim();
+    birth_date = birth_date.trim();
+    if (!first_name || !last_name || !birth_date || !department_id) { return; }
+    this.employeeService.addEmployee({ department_id, first_name, last_name  } as Employee)
       .subscribe(d => {
-        this.departments.push(d);
+        this.employees.push(d);
       });
   }
 
-  deleteDepartment(i: number): void{
-    this.departments = this.departments.filter(h => h.id !== i);
-    this.departmentService.deleteDepartment(i).subscribe();
+  deleteEmployee(i: number): void{
+    this.employees = this.employees.filter(h => h.id !== i);
+    this.employeeService.deleteEmployee(i).subscribe();
   }
 
-  getDepartmentNameById(i:number): string{
-    return this.departmentService.getDepartmentNameById(i-1);
-  }
+  // getDepartmentNameById(i:number): string{
+  //   return this.departmentService.getDepartmentNameById(i-1);
+  // }
 
 }
 

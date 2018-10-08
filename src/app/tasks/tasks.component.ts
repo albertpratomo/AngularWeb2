@@ -14,10 +14,6 @@ export class TasksComponent implements OnInit {
 
   constructor(private modalService: NgbModal ,  private taskService: TaskService, private projectService: ProjectService) { }
 
-  // newId:string;
-  // newTitle:string;
-  // newDeadline:string;
-  // newProid:number;
   tasks: Task[];
   // selectedTask: Task;
 
@@ -36,21 +32,22 @@ export class TasksComponent implements OnInit {
     this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
   }
 
-  add(name: string, building : string): void {
+  add(name: string, due_date : string, department_id:number): void {
     name = name.trim();
-    building = building.trim();
-    if (!name || !building) { return; }
-    this.departmentService.addDepartment({ name, building } as Department)
+    due_date = due_date.trim();
+    if (!name || !due_date || !department_id) { return; }
+    this.taskService.addTask({ department_id, name  } as Task)
       .subscribe(d => {
-        this.departments.push(d);
+        this.tasks.push(d);
       });
   }
 
-  deleteDepartment(i: number): void{
-    this.departments = this.departments.filter(h => h.id !== i);
-    this.departmentService.deleteDepartment(i).subscribe();
+  deleteTask(i: number): void{
+    this.tasks = this.tasks.filter(h => h.id !== i);
+    this.taskService.deleteTask(i).subscribe();
   }
-    getProjectNameById(i:number): string{
+   
+  getProjectNameById(i:number): string{
     return this.projectService.getProjectNameById(i-1);
   }
 }

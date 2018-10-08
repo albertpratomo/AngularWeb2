@@ -12,7 +12,10 @@ export class FilterPipe implements PipeTransform {
 		return items.filter( it => {
 			if (it.name) {
 				return it.name.toLowerCase().includes(searchText);
-			} else if (it.title) {
+			} else if (it.first_name) {
+				const name = it.first_name+' '+it.last_name;
+				return name.toLowerCase().includes(searchText);
+			} else if (it.title){
 				return it.title.toLowerCase().includes(searchText);
 			}
 		});

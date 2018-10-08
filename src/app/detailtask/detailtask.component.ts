@@ -22,7 +22,7 @@ export class DetailtaskComponent implements OnInit {
 	ngOnInit() {
 	 this.selectedTaskId = +this.route.snapshot.paramMap.get('id');
 	 this.getSelectedTask(this.selectedTaskId);
-	 this.getSelectedProject();
+	 // this.getSelectedProject();
 	}
 
 	constructor(
@@ -38,15 +38,15 @@ export class DetailtaskComponent implements OnInit {
   }
 
 
-  getSelectedProject(){
-    this.projectService.getProjectById(this.selectedTask.proid).subscribe(project => this.selectedProject = project);
-  }
+  // getSelectedProject(){
+  //   this.projectService.getProjectById(this.selectedTask.proid).subscribe(project => this.selectedProject = project);
+  // }
 
   goBack(): void {
     this.location.back();
   }
 
-    save(): void {
+  save(): void {
     this.taskService.updateTask(this.selectedTask)
     .subscribe(() => this.goBack());
   }

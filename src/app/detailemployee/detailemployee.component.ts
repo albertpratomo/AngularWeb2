@@ -26,7 +26,7 @@ export class DetailemployeeComponent implements OnInit {
   ngOnInit() {
     this.selectedEmployeeId = +this.route.snapshot.paramMap.get('id');
     this.getSelectedEmployee(this.selectedEmployeeId);
-    this.getProtitlesByEmpid();
+    // this.getProtitlesByEmpid();
 
   }
 
@@ -45,31 +45,30 @@ export class DetailemployeeComponent implements OnInit {
     this.employeeService.getEmployeeById(id).subscribe(employee => this.selectedEmployee = employee);
   }
 
-  getDepartmentNameById(i:number): string{
-    return this.departmentService.getDepartmentNameById(i-1);
-  }
+  // getDepartmentNameById(i:number): string{
+  //   return this.departmentService.getDepartmentNameById(i-1);
+  // }
 
-  getSelectedDepartment(): void{
-    // this.selectedDepartment = this.departmentService.getDepartmentById(this.selectedEmployee.depid-1);
-    this.departmentService.getDepartmentById(this.selectedEmployee.depid).subscribe(department => this.selectedDepartment = department);
-  }
+  // getSelectedDepartment(): void{
+  //   // this.selectedDepartment = this.departmentService.getDepartmentById(this.selectedEmployee.depid-1);
+  //   this.departmentService.getDepartmentById(this.selectedEmployee.depid).subscribe(department => this.selectedDepartment = department);
+  // }
 
-  getProtitlesByEmpid(): void{
-    let id = this.selectedEmployeeId;
-    let proids : number[] = [];
-    proids = this.empprjService.getProidsByEmpid(id);
-    for(let proid of proids){
-      let title : string;
-      title = this.projectService.getProjectNameById(proid-1);
-      this.projecttitles.push(title);
-    }
-  }
+  // getProtitlesByEmpid(): void{
+  //   let id = this.selectedEmployeeId;
+  //   let proids : number[] = [];
+  //   proids = this.empprjService.getProidsByEmpid(id);
+  //   for(let proid of proids){
+  //     let title : string;
+  //     title = this.projectService.getProjectNameById(proid-1);
+  //     this.projecttitles.push(title);
+  //   }
+  // }
+  
   goBack(): void {
     this.location.back();
   }
-
   
-
   save(): void {
     this.employeeService.updateEmployee(this.selectedEmployee)
     .subscribe(() => this.goBack());

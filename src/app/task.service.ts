@@ -13,7 +13,7 @@ const httpOptions = {
 })
 export class TaskService {
   
-  private apiUrl = 'http://i875395.hera.fhict.nl/api/406448/task';
+  private apiUrl = 'http://i875395.hera.fhict.nl/api/386125/task';
 
   // tasks : Task[];
   // co : number;

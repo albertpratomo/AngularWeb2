@@ -13,7 +13,7 @@ const httpOptions = {
 })
 export class DepartmentService {
 
-	private apiUrl = 'http://i875395.hera.fhict.nl/api/406448/department';
+	private apiUrl = 'http://i875395.hera.fhict.nl/api/386125/department';
 
 	constructor(
 	 private http: HttpClient

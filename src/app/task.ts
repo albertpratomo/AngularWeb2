@@ -4,5 +4,4 @@ export class Task {
   name: string;
   employees: number[];
   due_date: string;
-
 }
