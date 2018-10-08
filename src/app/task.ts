@@ -1,6 +1,8 @@
 export class Task {
   id: number;
-  title: string;
-  deadline: string;
-  proid : number;
+  department_id : number;
+  name: string;
+  employees: number[];
+  due_date: string;
+
 }

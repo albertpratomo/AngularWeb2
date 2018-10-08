@@ -46,8 +46,13 @@ export class DetailtaskComponent implements OnInit {
     this.location.back();
   }
 
+    save(): void {
+    this.taskService.updateTask(this.selectedTask)
+    .subscribe(() => this.goBack());
+  }
+
   deleteTask(): void{
-    this.taskService.deleteTask(this.selectedTaskId-1);
-    this.goBack();
+    this.taskService.deleteTask(this.selectedTask.id)
+    .subscribe(() => this.goBack());
   }
 }

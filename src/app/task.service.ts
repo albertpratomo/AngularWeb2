@@ -1,70 +1,110 @@
 import { Injectable } from '@angular/core';
 import { Task } from './task';
 import { Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
+  
+  private apiUrl = 'http://i875395.hera.fhict.nl/api/406448/task';
 
-  tasks : Task[];
-  co : number;
+  // tasks : Task[];
+  // co : number;
 
-  constructor() { 
-    this.tasks = [
-  { id: 1, title: 'Making task plan',deadline: '14-9-2018', proid:1},
-  { id: 2, title: 'Making visual design',deadline: '14-9-2018', proid:2},
-  { id: 3, title: 'Making database',deadline: '14-9-2018' , proid:3},
-  { id: 4, title: 'Making mind map',deadline: '14-9-2018', proid:4},
-  { id: 5, title: 'Doing lego programming',deadline: '21-10-2018', proid:1},
-  { id: 6, title: 'Doing C# proramming',deadline: '21-10-2018' , proid:3},
-  { id: 7, title: 'Doing js programming',deadline: '21-10-2018' , proid:5},
-  { id: 8, title: 'Making website',deadline: '9-11-2018' , proid:4},
-  { id: 9, title: 'Making report',deadline: '19-12-2018', proid:4},
-  { id: 10, title:'Making presentation',deadline: '19-10-2018' , proid:2}
-];
-    this.co = this.tasks.length;
+  constructor(private http: HttpClient) { 
+//     this.tasks = [
+//   { id: 1, title: 'Making task plan',deadline: '14-9-2018', proid:1},
+//   { id: 2, title: 'Making visual design',deadline: '14-9-2018', proid:2},
+//   { id: 3, title: 'Making database',deadline: '14-9-2018' , proid:3},
+//   { id: 4, title: 'Making mind map',deadline: '14-9-2018', proid:4},
+//   { id: 5, title: 'Doing lego programming',deadline: '21-10-2018', proid:1},
+//   { id: 6, title: 'Doing C# proramming',deadline: '21-10-2018' , proid:3},
+//   { id: 7, title: 'Doing js programming',deadline: '21-10-2018' , proid:5},
+//   { id: 8, title: 'Making website',deadline: '9-11-2018' , proid:4},
+//   { id: 9, title: 'Making report',deadline: '19-12-2018', proid:4},
+//   { id: 10, title:'Making presentation',deadline: '19-10-2018' , proid:2}
+// ];
+//     this.co = this.tasks.length;
   }
 
-  getTasks(): Observable<Task[]> {
-    return of(this.tasks);
+  /** GET taskes from the server */
+  getTasks (): Observable<Task[]> {
+    return this.http.get<Task[]>(this.apiUrl)
+      .pipe(
+        // tap(taskes => this.log('fetched taskes')),
+        catchError(this.handleError('getTasks', []))
+      );
   }
 
+  /** GET task by id. Will 404 if id not found */
   getTaskById(id: number): Observable<Task> {
-    return of(this.tasks.find(task => task.id === id));
+    const url = `${this.apiUrl}?id=${id}`;
+    return this.http.get<Task>(url).pipe(
+      // tap(_ => this.log(`fetched task id=${id}`)),
+      catchError(this.handleError<Task>(`getTaskById id=${id}`))
+    );
   }
 
-  getTaskTitlesByProid(id:number): string[] {
-    let titles : string[] = [];
-    for (let task of this.tasks){
-        if (task.proid == id) {
-            titles.push(task.title);
-        }
-    }
-    return titles;
+  /** POST: add a new task to the server */
+  addTask (task: Task): Observable<Task> {
+    return this.http.post<Task>(this.apiUrl, task, httpOptions).pipe(
+      // tap((task: Task) => this.log(`added task w/ id=${task.id}`)),
+      catchError(this.handleError<Task>('addTask'))
+    );
   }
 
-  createTask(newTitle:string, newDeadline:string,newProid:number):void {
-    let newId : number; 
-    if(this.co <= 0){
-      newId = 1;
-    }else{
-      newId = this.tasks[this.co-1].id + 1;
-    }
-
-    let t: Task = {
-      id: newId,
-      title: newTitle,
-      deadline: newDeadline,
-      proid:newProid
-    }
-    this.tasks.push(t);
-    this.co = this.tasks.length;
+  /** PUT: update the task on the server */
+  updateTask (task: Task): Observable<any> {
+    const url = `${this.apiUrl}?id=${task.id}`;
+    return this.http.put(url, task, httpOptions).pipe(
+      // tap(_ => this.log(`updated task id=${task.id}`)),
+      catchError(this.handleError<any>('updateTask'))
+    );
   }
 
-  deleteTask(i: number): void{
-    this.tasks.splice(i,1);
-    this.co = this.tasks.length;
+  /** DELETE: delete the task from the server */
+  deleteTask (task: number): Observable<Task> {
+    const url = `${this.apiUrl}?id=${task}`;
+
+    return this.http.delete<Task>(url, httpOptions).pipe(
+      // tap(_ => this.log(`deleted task id=${id}`)),
+      catchError(this.handleError<Task>('deleteTask'))
+    );
   }
+
+  /**
+   * Handle Http operation that failed.
+   * Let the app continue.
+   * @param operation - name of the operation that failed
+   * @param result - optional value to return as the observable result
+   */
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+   
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+   
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
+
+
+  // getTaskTitlesByProid(id:number): string[] {
+  //   let titles : string[] = [];
+  //   for (let task of this.tasks){
+  //       if (task.proid == id) {
+  //           titles.push(task.title);
+  //       }
+  //   }
+  //   return titles;
+  // }
 }
 
