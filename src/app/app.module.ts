@@ -24,6 +24,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { HttpClientModule }    from '@angular/common/http';
 import { FilterPipe} from './filter.pipe';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 //ANGULAR CALENDAR
 import { CommonModule } from '@angular/common';
@@ -50,7 +51,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     DetailprojectComponent,
     DashboardComponent,
     FilterPipe,
-    CalendarComponent
+    CalendarComponent,
+    NotfoundComponent
   ],
   imports: [
     NgbModule,
@@ -60,6 +62,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     AppRoutingModule,
     BrowserAnimationsModule,
     CommonModule,
+    HttpClientModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory

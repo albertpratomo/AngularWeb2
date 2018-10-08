@@ -13,86 +13,41 @@
     </h3>
     <div class="row">
       <div class="col-6">
-        <form>
       <div class="form-group">
         <label for="title">ID</label>
         <div class="input-group">
-          {{ selectedDepartment.id }}
+          <input [(ngModel)]="selectedDepartment.id" class="form-control" placeholder="ID">
         </div>
       </div>
       <div class="form-group">
         <label for="title">Name</label>
         <div class="input-group">
-          {{ selectedDepartment.name }}
+          <input [(ngModel)]="selectedDepartment.name" class="form-control" placeholder="Name">
         </div>
       </div>
       <div class="form-group">
         <label for="title">Building</label>
         <div class="input-group">
-          {{ selectedDepartment.building }}
+          <input [(ngModel)]="selectedDepartment.building" class="form-control" placeholder="Building">
         </div>
       </div>
-      <div class="form-group">
-        <label for="title">City</label>
-        <div class="input-group">
-          {{ selectedDepartment.city }}
-        </div>
-      </div>
-     
-    </form>
          
       </div>
       <div class="col-6">
          <div class="form-group">
         <label for="title">Employees</label>
-        <div class="input-group" *ngFor="let name of names">
+        <div class="input-group" *ngFor="let name of selectedDepartment.employees">
           {{ name }}
         </div>
       </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-2">
+      <button class="btn btn-sm btn-primary" (click)="save()">
+        Update
+      </button>
+      </div>
+    </div>
   </div>
 </div>
-
-
-
-
-<!-- <ng-template #modaledit let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Edit Department</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form>
-      <div class="form-group">
-        <label for="title">ID</label>
-        <div class="input-group">
-          <input id="department-id" [(ngModel)]="selectedDepartment.id" class="form-control" placeholder="ID" name="department-id" >
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="title">Name</label>
-        <div class="input-group">
-          <input id="project-title" [(ngModel)]="selectedDepartment.name" class="form-control" placeholder="Name" name="department-title" >
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="title">Building</label>
-        <div class="input-group">
-          <input id="department-building" [(ngModel)]="selectedDepartment.building" class="form-control" placeholder="Building" name="department-building" >
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="title">City</label>
-        <div class="input-group">
-          <input id="department-city" [(ngModel)]="selectedDepartment.city" class="form-control" placeholder="City" name="department-city" >
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-  </div>
-</ng-template> -->

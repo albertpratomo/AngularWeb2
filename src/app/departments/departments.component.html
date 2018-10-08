@@ -1,7 +1,11 @@
 <h3>Departments</h3>
-<button class="btn btn-success btn-block" (click)="open(modalcreate)">
-  <i class="fa fa-plus"></i> <b> Create Department </b>
-</button>  
+
+<div class="row form-inline justify-content-between">
+  <input [(ngModel)]="searchText" class="form-control col-3" placeholder="Search Department">
+  <button class="btn btn-success col-3" (click)="open(modalcreate)">
+    <i class="fa fa-plus"></i> <b> Create Department </b>
+  </button>  
+</div>
 <ng-template #modalcreate let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Create Department</h4>
@@ -14,51 +18,39 @@
       <div class="form-group">
         <label for="title">Name</label>
         <div class="input-group">
-          <input id="department-name" [(ngModel)]="newName" class="form-control" placeholder="Name" name="department-name" >
+          <input class="form-control" placeholder="Name" #newName>
         </div>
       </div>
       <div class="form-group">
         <label for="title">Building</label>
         <div class="input-group">
-          <input id="department-building" [(ngModel)]="newBuilding" class="form-control" placeholder="Department Building" name="department-building" >
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="title">City</label>
-        <div class="input-group">
-          <input id="department-city" [(ngModel)]="newCity" class="form-control" placeholder="City" name="department-city" >
+          <input class="form-control" placeholder="Name" #newBuilding>
         </div>
       </div>
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-primary" (click)="createDepartment()">Create</button>
+    <button type="button" class="btn btn-outline-primary" (click)="add(newName.value, newBuilding.value);newName.value='';newBuilding.value=''">Create</button>
   </div>
 </ng-template>
 
-<!------ ------->
 <table class="table table-hover">
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
       <th scope="col">Building</th>
-      <th scope="col">City</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
-    <!------------->
-    <tr *ngFor="let department of departments; let i = index" (click)="onSelect(department)">
+    <tr *ngFor="let department of departments | filter : searchText; let i = index" (click)="onSelect(department)">
       <th scope="row">{{ department.id }}</th>
       <td>{{ department.name }}</td>
-      <td>{{department.building}}</td>
-      <td>{{department.city}}</td>
-
-      <td><a  routerLink="/department/{{department.id}}"><button class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></button></a>
-
-      <button class="btn btn-sm btn-danger" (click)="deleteDepartment(i)"><i class="fa fa-trash"></i></button> 
-
+      <td>{{ department.building }}</td>
+      <td>
+        <a  routerLink="/department/{{department.id}}"><button class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></button></a>
+        <button class="btn btn-sm btn-danger" (click)="deleteDepartment(department.id)"><i class="fa fa-trash"></i></button> 
       </td>
     </tr>
   </tbody>

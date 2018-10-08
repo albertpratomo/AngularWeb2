@@ -20,7 +20,6 @@ export class DetaildepartmentComponent implements OnInit {
   ngOnInit() {
     this.selectedDepartmentId = +this.route.snapshot.paramMap.get('id');
     this.getSelectedDepartment(this.selectedDepartmentId);
-    this.getEmployeesNamesByDepId(this.selectedDepartmentId);
   }
   
   constructor(
@@ -29,20 +28,29 @@ export class DetaildepartmentComponent implements OnInit {
     private departmentService: DepartmentService,
     private route: ActivatedRoute,
     private location: Location
-    ) {}
+    ) {
+    this.getSelectedDepartment(this.selectedDepartmentId);
+  }
 
   getSelectedDepartment(id: number){
     this.departmentService.getDepartmentById(id).subscribe(department => this.selectedDepartment = department);
   }
+
   getEmployeesNamesByDepId(id:number): void {
     this.names =  this.employeeService.getEmployeesNamesByDepId(id);
   }
+
   goBack(): void {
     this.location.back();
   }
 
+  save(): void {
+    this.departmentService.updateDepartment(this.selectedDepartment)
+    .subscribe(() => this.goBack());
+  }
+
   deleteDepartment(): void{
-    this.departmentService.deleteDepartment(this.selectedDepartmentId-1);
-    this.goBack();
+    this.departmentService.deleteDepartment(this.selectedDepartment.id)
+    .subscribe(() => this.goBack());
   }
 }

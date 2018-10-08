@@ -1,10 +1,10 @@
 <h3>Employees</h3>
 
 <div class="row form-inline justify-content-between">
-    <input [(ngModel)]="searchText" class="form-control col-3" placeholder="Search Employee">
-<button class="btn btn-success col-3" (click)="open(modalcreate)">
-  <i class="fa fa-plus"></i> <b> Create Employee </b>
-</button>  
+  <input [(ngModel)]="searchText" class="form-control col-3" placeholder="Search Employee">
+  <button class="btn btn-success col-3" (click)="open(modalcreate)">
+    <i class="fa fa-plus"></i> <b> Create Employee </b>
+  </button>  
 </div>
 <ng-template #modalcreate let-modal>
   <div class="modal-header">
