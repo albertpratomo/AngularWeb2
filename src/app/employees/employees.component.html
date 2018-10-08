@@ -16,27 +16,28 @@
   <div class="modal-body">
     <form>
       <div class="form-group">
-        <label for="title">Employee Name</label>
+        <label for="title">First Name</label>
         <div class="input-group">
-          <input id="employee-name" [(ngModel)]="newName" class="form-control" placeholder="XXX" name="employee-name" >
+          <input class="form-control" placeholder="First Name" #newFName>
         </div>
       </div>
       <div class="form-group">
-        <label for="title">Employee Email</label>
+        <label for="title">Last Name</label>
         <div class="input-group">
-          <input id="employee-email" [(ngModel)]="newEmail" class="form-control" placeholder="XXX@XX.com" name="employee-email" >
+          <input class="form-control" placeholder="Last Name" #newLName>
+              
         </div>
       </div>
       <div class="form-group">
-        <label for="title">Employee Phone</label>
+        <label for="title">Birth Date</label>
         <div class="input-group">
-          <input id="employee-phone" [(ngModel)]="newPhone" class="form-control" placeholder="xxxxxxx" name="employee-phone" >
+          <input class="form-control" placeholder="Birth Date" #newBDate>
         </div>
       </div>
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-primary" (click)="createEmployee()">Create</button>
+    <button type="button" class="btn btn-outline-primary" (click)="add(newFName.value, newLName.value, newBDate.value);newFName.value='';newLName.value='';newBDate.value=''">Create</button>
   </div>
 </ng-template>
 
@@ -45,23 +46,22 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th cope="col">Phone</th>
+      <th cope="col">Birth Date</th>
       <th cope="col">Department</th>
       <th cope="col">Action</th>
     </tr>
   </thead>
 
   <tbody>
-    <tr *ngFor="let employee of employees | filter : searchText; let i = index" (click)="onSelect(employee)">
+    <tr *ngFor="let employee of employees | filter : searchText; let i = index" >
       <th scope="row">{{employee.id}}</th>
-      <td>{{employee.name}}</td>
-      <td>{{employee.email}}</td>
-      <td>{{employee.phone}}</td>
-      <td>{{getDepartmentNameById(employee.depid)}}</td>
+      <td>{{employee.first_name employee.last_name}}</td>
+      <td>{{employee.birth_date}}</td>
+      <td>{{employee.department_id}}</td>
+      <!-- <td>{{getDepartmentNameById(employee.depid)}}</td> -->
       <td>
         <a  routerLink="/employee/{{employee.id}}"><button class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></button></a>
-        <button class="btn btn-sm btn-danger" (click)="deleteEmployee(i)"><i class="fa fa-trash"></i></button>
+        <button class="btn btn-sm btn-danger" (click)="deleteEmployee(employee.id)"><i class="fa fa-trash"></i></button>
       </td>
     </tr>
   </tbody>

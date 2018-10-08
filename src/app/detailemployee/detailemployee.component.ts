@@ -68,8 +68,15 @@ export class DetailemployeeComponent implements OnInit {
     this.location.back();
   }
 
+  
+
+  save(): void {
+    this.employeeService.updateEmployee(this.selectedEmployee)
+    .subscribe(() => this.goBack());
+  }
+
   deleteEmployee(): void{
-    this.employeeService.deleteEmployee(this.selectedEmployeeId-1);
-    this.goBack();
+    this.employeeService.deleteEmployee(this.selectedEmployee.id)
+    .subscribe(() => this.goBack());
   }
 }

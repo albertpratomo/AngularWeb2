@@ -13,15 +13,15 @@ export class EmployeesComponent implements OnInit {
 
   constructor(private modalService: NgbModal ,  private employeeService: EmployeeService, private departmentService: DepartmentService) { }
 
-  newName:string;
-  newEmail:string;
-  newPhone:string;
+  // newName:string;
+  // newEmail:string;
+  // newPhone:string;
   employees: Employee[];
-  selectedEmployee: Employee;
+  // selectedEmployee: Employee;
 
   ngOnInit() {
     this.getEmployeesFromService();
-    this.selectedEmployee = this.employees[0];
+    // this.selectedEmployee = this.employees[0];
   }
 
   open(content:any) {
@@ -30,26 +30,38 @@ export class EmployeesComponent implements OnInit {
     });
   }
 
-  onSelect(p: Employee): void {
-    this.selectedEmployee = p;
-  }
+  // onSelect(p: Employee): void {
+  //   this.selectedEmployee = p;
+  // }
 
   getEmployeesFromService(): void {
     this.employeeService.getEmployees().subscribe(employees => this.employees = employees);
   }
 
-  createEmployee():void {
-    this.employeeService.createEmployee(this.newName,this.newEmail,this.newPhone);
+
+  
+
+  add(name: string, building : string): void {
+    name = name.trim();
+    building = building.trim();
+    if (!name || !building) { return; }
+    this.departmentService.addDepartment({ name, building } as Department)
+      .subscribe(d => {
+        this.departments.push(d);
+      });
   }
 
-  deleteEmployee(i: number): void{
-    this.employeeService.deleteEmployee(i);
+  deleteDepartment(i: number): void{
+    this.departments = this.departments.filter(h => h.id !== i);
+    this.departmentService.deleteDepartment(i).subscribe();
   }
 
   getDepartmentNameById(i:number): string{
     return this.departmentService.getDepartmentNameById(i-1);
   }
+
 }
+
 
 
 
