@@ -10,17 +10,14 @@ import { Department } from '../department';
 })
 export class DepartmentsComponent implements OnInit {
 
-  constructor(private modalService: NgbModal ,  private departmentService: DepartmentService) { }
+  constructor(
+    private modalService: NgbModal ,  
+    private departmentService: DepartmentService) { }
 
-  newName:string;
-  newBuilding:string;
-  newCity:string;
   departments: Department[];
-  selectedDepartment: Department;
 
   ngOnInit() {
     this.getDepartmentsFromService();
-    this.selectedDepartment = this.departments[0];
   }
 
   open(content:any) {
@@ -29,19 +26,22 @@ export class DepartmentsComponent implements OnInit {
     });
   }
 
-  onSelect(p: Department): void {
-    this.selectedDepartment = p;
-  }
-
   getDepartmentsFromService(): void {
     this.departmentService.getDepartments().subscribe(departments => this.departments = departments);
   }
 
-  createDepartment():void {
-    this.departmentService.createDepartment(this.newName,this.newBuilding,this.newCity);
+  add(name: string, building : string): void {
+    name = name.trim();
+    building = building.trim();
+    if (!name || !building) { return; }
+    this.departmentService.addDepartment({ name, building } as Department)
+      .subscribe(d => {
+        this.departments.push(d);
+      });
   }
 
   deleteDepartment(i: number): void{
-    this.departmentService.deleteDepartment(i);
+    this.departments = this.departments.filter(h => h.id !== i);
+    this.departmentService.deleteDepartment(i).subscribe();
   }
 }
