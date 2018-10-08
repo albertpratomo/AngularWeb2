@@ -81,7 +81,7 @@ export class DepartmentService {
 	  };
 	}
 
-	getDepartmentNameById(id:number): string {
-	  return this.departments[id].name;
-	}
+	// getDepartmentNameById(id:number): string {
+	//   return this.departments[id].name;
+	// }
 }

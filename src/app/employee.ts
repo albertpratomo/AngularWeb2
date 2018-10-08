@@ -1,7 +1,7 @@
 export class Employee {
   id:number;
-  name:string;
-  email:string;
-  phone:string;
-  depid:number;
+  department_id:number;
+  first_name:string;
+  last_name:string;
+  birth_date:string;
 }
