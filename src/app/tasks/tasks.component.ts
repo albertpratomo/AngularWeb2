@@ -14,16 +14,16 @@ export class TasksComponent implements OnInit {
 
   constructor(private modalService: NgbModal ,  private taskService: TaskService, private projectService: ProjectService) { }
 
-  newId:string;
-  newTitle:string;
-  newDeadline:string;
-  newProid:number;
+  // newId:string;
+  // newTitle:string;
+  // newDeadline:string;
+  // newProid:number;
   tasks: Task[];
-  selectedTask: Task;
+  // selectedTask: Task;
 
   ngOnInit() {
     this.getTasksFromService();
-    this.selectedTask = this.tasks[0];
+    // this.selectedTask = this.tasks[0];
   }
 
   open(content:any) {
@@ -32,23 +32,25 @@ export class TasksComponent implements OnInit {
     });
   }
 
-  onSelect(p: Task): void {
-    this.selectedTask = p;
-  }
-
   getTasksFromService(): void {
     this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
   }
 
-  createTask():void {
-    this.taskService.createTask(this.newTitle,this.newDeadline,this.newProid);
+  add(name: string, building : string): void {
+    name = name.trim();
+    building = building.trim();
+    if (!name || !building) { return; }
+    this.departmentService.addDepartment({ name, building } as Department)
+      .subscribe(d => {
+        this.departments.push(d);
+      });
   }
 
-  deleteTask(i: number): void{
-    this.taskService.deleteTask(i);
+  deleteDepartment(i: number): void{
+    this.departments = this.departments.filter(h => h.id !== i);
+    this.departmentService.deleteDepartment(i).subscribe();
   }
-
-  getProjectNameById(i:number): string{
+    getProjectNameById(i:number): string{
     return this.projectService.getProjectNameById(i-1);
   }
 }
