@@ -32,7 +32,9 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 //ANGULAR CALENDAR
+
 
 
 @NgModule({
@@ -58,6 +60,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     NgbModule,
     BrowserModule,
     FormsModule,
+    NgbModalModule,
     NgbModule.forRoot(),
     AppRoutingModule,
     BrowserAnimationsModule,

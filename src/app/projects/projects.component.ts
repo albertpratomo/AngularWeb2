@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { ProjectService } from '../project.service';
 import { Project } from '../project';
+import { Department } from '../department';
 import { DepartmentService } from '../department.service';
 import { FilterPipe} from '../filter.pipe';
 
@@ -12,17 +13,23 @@ import { FilterPipe} from '../filter.pipe';
 })
 export class ProjectsComponent implements OnInit {
 
-	constructor(private modalService: NgbModal ,  private projectService: ProjectService, private departmentService: DepartmentService) { }
+	constructor(private modalService: NgbModal,
+		private projectService: ProjectService,
+		private departmentService: DepartmentService)
+	{ 
+		this.getProjectsFromService();
+		this.getDepartmentsFromService();
+	}
 
 	newTitle:string;
-	newLeader:string;
+	newPDepId:number;
 	newDeadline:string;
 	projects: Project[];
-	selectedProject: Project;
+	departments: Department[];
+
 
 	ngOnInit() {
-		this.getProjectsFromService();
-		this.selectedProject = this.projects[0];
+		this.newPDepId = 3048;
 	}
 
 	open(content:any) {
@@ -31,23 +38,24 @@ export class ProjectsComponent implements OnInit {
 		});
 	}
 
-	onSelect(p: Project): void {
-		this.selectedProject = p;
-	}
-
 	getProjectsFromService(): void {
-	  this.projectService.getProjects().subscribe(projects => this.projects = projects);
+		this.projectService.getProjects().subscribe(projects => this.projects = projects);
 	}
 
 	createProject():void {
-		this.projectService.createProject(this.newTitle,this.newDeadline);
+		this.projectService.createProject(this.newTitle,this.newPDepId,this.newDeadline);
 	}
 
 	deleteProject(i: number): void{
 		this.projectService.deleteProject(i);
 	}
 
-	getDepartmentNameById(i:number): string{
-	    return this.departmentService.getDepartmentNameById(i);
+	getDepartmentNameById(id:number): string{
+		// return this.depar.getDepartmentNameById(i);	   
+	  	return this.departments.find(d => d.id === id).name;
+	}
+
+	getDepartmentsFromService(): void {
+		this.departmentService.getDepartments().subscribe(departments => this.departments = departments);
 	}
 }

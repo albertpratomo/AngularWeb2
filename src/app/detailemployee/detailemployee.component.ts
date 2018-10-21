@@ -20,12 +20,14 @@ export class DetailemployeeComponent implements OnInit {
 
   selectedEmployeeId: number;
   selectedEmployee: Employee;
-  selectedDepartment: Department;
-  projecttitles: string[] = [];
+  departments: Department[];
+  // selectedDepartment: Department;
+  // projecttitles: string[] = [];
 
   ngOnInit() {
     this.selectedEmployeeId = +this.route.snapshot.paramMap.get('id');
     this.getSelectedEmployee(this.selectedEmployeeId);
+    this.getDepartmentsFromService();
     // this.getProtitlesByEmpid();
 
   }
@@ -47,6 +49,10 @@ export class DetailemployeeComponent implements OnInit {
 
   getDepartmentNameById(i:number): string{
     return this.departmentService.getDepartmentNameById(i);
+  }
+
+  getDepartmentsFromService(): void {
+    this.departmentService.getDepartments().subscribe(departments => this.departments = departments);
   }
 
   // getSelectedDepartment(): void{

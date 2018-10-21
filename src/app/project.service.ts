@@ -14,11 +14,11 @@ export class ProjectService {
 
 		// The data is hardcoded in this service because there is no API to populate the Projects data
 		this.projects = [
-		{ id: 1, title: 'Web 2 Angular', deadline: '24-10-2018', depid: 3048 },
-		{ id: 2, title: 'Android 1', deadline: '27-10-2018', depid: 3049 },
-		{ id: 3, title: 'Android 2', deadline: '28-10-2018', depid: 3048 },
-		{ id: 4, title: 'iOS 1', deadline: '30-10-2018', depid: 3049 },
-		{ id: 5, title: 'iOS 2', deadline: '31-10-2018', depid: 3051 }
+		{ id: 1, title: 'Web 2 Angular', deadline: '2018-10-22', depid: 3048 },
+		{ id: 2, title: 'Android 1', deadline: '2018-10-24', depid: 3049 },
+		{ id: 3, title: 'Android 2', deadline: '2018-10-25', depid: 3048 },
+		{ id: 4, title: 'iOS 1', deadline: '2018-10-30', depid: 3049 },
+		{ id: 5, title: 'iOS 2', deadline: '2018-10-31', depid: 3051 }
 		];
 		this.co = this.projects.length;
 	}
@@ -35,7 +35,7 @@ export class ProjectService {
 	  return this.projects[id].title;
 	}
 
-	createProject(newTitle:string, newDeadline:string):void {
+	createProject(newTitle:string, newDepId:number ,newDeadline:string):void {
 		let newId : number; 
 		if(this.co <= 0){
 			newId = 1;
@@ -47,7 +47,7 @@ export class ProjectService {
 			id: newId,
 			title: newTitle,
 			deadline: newDeadline,
-			depid: 1
+			depid: newDepId
 		}
 		this.projects.push(p);
 		this.co = this.projects.length;

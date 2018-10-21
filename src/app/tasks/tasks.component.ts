@@ -3,6 +3,8 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { TaskService } from '../task.service';
 import { Task } from '../task';
 import { ProjectService } from '../project.service';
+import { Department } from '../department';
+import { DepartmentService } from '../department.service';
 
 
 @Component({
@@ -12,13 +14,19 @@ import { ProjectService } from '../project.service';
 })
 export class TasksComponent implements OnInit {
 
-  constructor(private modalService: NgbModal ,  private taskService: TaskService, private projectService: ProjectService) { }
+  constructor(
+    private modalService: NgbModal ,  
+    private taskService: TaskService, 
+    private projectService: ProjectService,
+    private departmentService: DepartmentService) { }
 
   tasks: Task[];
+  departments: Department[];
   // selectedTask: Task;
 
   ngOnInit() {
     this.getTasksFromService();
+    this.getDepartmentsFromService();
     // this.selectedTask = this.tasks[0];
   }
 
@@ -30,6 +38,10 @@ export class TasksComponent implements OnInit {
 
   getTasksFromService(): void {
     this.taskService.getTasks().subscribe(tasks => this.tasks = tasks);
+  }
+
+  getDepartmentsFromService(): void {
+    this.departmentService.getDepartments().subscribe(departments => this.departments = departments);
   }
 
   add(name: string, due_date : string, department_id:number): void {

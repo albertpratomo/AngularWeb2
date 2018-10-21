@@ -20,17 +20,12 @@ export class DetailprojectComponent implements OnInit {
 
   selectedProjectId: number;
   selectedProject: Project;
-  selectedDepartment: Department;
-  empids: number[] = [];
-  empnames: string[] = [];
-  tasktitles: string[] = [];
+  departments: Department[];
 
   ngOnInit() {
     this.selectedProjectId = +this.route.snapshot.paramMap.get('id');
     this.getSelectedProject(this.selectedProjectId);
-    // this.getSelectedDepartment();
-    // this.getTaskTitlesByProid(this.selectedProjectId);
-    // this.getEmpnamesByProid();
+    this.getDepartmentsFromService();
   }
 
   constructor(
@@ -48,8 +43,8 @@ export class DetailprojectComponent implements OnInit {
     this.projectService.getProjectById(id).subscribe(project => this.selectedProject = project);
   }
 
-  getSelectedDepartment(): void{
-    this.departmentService.getDepartmentById(this.selectedProject.depid).subscribe(department => this.selectedDepartment = department);
+  getDepartmentsFromService(): void {
+    this.departmentService.getDepartments().subscribe(departments => this.departments = departments);
   }
 
   getDepartmentNameById(i:number): string{

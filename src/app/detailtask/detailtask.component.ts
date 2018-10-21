@@ -6,6 +6,7 @@ import { ProjectService } from '../project.service';
 import { TaskService } from '../task.service';
 import { EmployeeService } from '../employee.service';
 import { DepartmentService } from '../department.service';
+import { Department } from '../department';
 
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -19,12 +20,12 @@ export class DetailtaskComponent implements OnInit {
 
   selectedTaskId: number;
   selectedTask: Task;
-  selectedProject: Project;
+  departments: Department[];
 
   ngOnInit() {
     this.selectedTaskId = +this.route.snapshot.paramMap.get('id');
     this.getSelectedTask(this.selectedTaskId);
-	 // this.getSelectedProject();
+    this.getDepartmentsFromService();
 	}
 
 	constructor(
@@ -47,6 +48,10 @@ export class DetailtaskComponent implements OnInit {
 
   getDepartmentNameById(i:number): string{
     return this.departmentService.getDepartmentNameById(i);
+  }
+
+  getDepartmentsFromService(): void {
+    this.departmentService.getDepartments().subscribe(departments => this.departments = departments);
   }
 
   // getSelectedProject(){
