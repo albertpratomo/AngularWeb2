@@ -45,9 +45,9 @@ export class DetailemployeeComponent implements OnInit {
     this.employeeService.getEmployeeById(id).subscribe(employee => this.selectedEmployee = employee);
   }
 
-  // getDepartmentNameById(i:number): string{
-  //   return this.departmentService.getDepartmentNameById(i-1);
-  // }
+  getDepartmentNameById(i:number): string{
+    return this.departmentService.getDepartmentNameById(i);
+  }
 
   // getSelectedDepartment(): void{
   //   // this.selectedDepartment = this.departmentService.getDepartmentById(this.selectedEmployee.depid-1);

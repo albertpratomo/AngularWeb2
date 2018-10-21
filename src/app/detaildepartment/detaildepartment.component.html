@@ -30,7 +30,7 @@
       <div class="col-6">
          <div class="form-group">
         <label for="title">Employees</label>
-        <div class="input-group" *ngFor="let name of selectedDepartment.employees">
+        <div class="input-group" *ngFor="let name of getNames(selectedDepartment.employees)">
           {{ name }}
         </div>
       </div>

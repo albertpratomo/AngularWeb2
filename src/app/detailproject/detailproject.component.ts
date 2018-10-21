@@ -52,6 +52,11 @@ export class DetailprojectComponent implements OnInit {
     this.departmentService.getDepartmentById(this.selectedProject.depid).subscribe(department => this.selectedDepartment = department);
   }
 
+  getDepartmentNameById(i:number): string{
+    return this.departmentService.getDepartmentNameById(i);
+  }
+
+  // The 2 functions below are used for the old ERD (before API)
   // getEmpnamesByProid(): void{
   //   let id = this.selectedProject.id;
   //   this.empids = this.empprjService.getEmpidsByProid(id);
@@ -65,6 +70,10 @@ export class DetailprojectComponent implements OnInit {
   // getTaskTitlesByProid(id:number): void{
   //   this.tasktitles = this.taskService.getTaskTitlesByProid(id);
   // }
+
+  save(): void {
+    this.goBack();
+  }
 
   goBack(): void {
     this.location.back();

@@ -24,12 +24,6 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="title">Project Leader</label>
-          <div class="input-group">
-            <input id="project-leader" [(ngModel)]="newLeader" class="form-control" placeholder="Leader Name" name="project-leader" >
-          </div>
-        </div>
-        <div class="form-group">
           <label for="title">Project Deadline</label>
           <div class="input-group">
             <input id="project-deadline" [(ngModel)]="newDeadline" class="form-control" placeholder="DD-MM-YYYY" name="project-deadline" >
@@ -48,7 +42,6 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Project Title</th>
-        <th scope="col">Leader</th>
         <th scope="col">Deadline</th>
         <th scope="col">Department</th>
         <th scope="col">Action</th>
@@ -58,7 +51,6 @@
       <tr *ngFor="let project of projects | filter : searchText; let i = index;" (click)="onSelect(project)">
         <th scope="row">{{ project.id }}</th>
         <td>{{ project.title }}</td>
-        <td>{{ project.leader }}</td>
         <td>{{ project.deadline }}</td>
         <td>{{ getDepartmentNameById(project.depid) }}</td>
         <td>

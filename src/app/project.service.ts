@@ -11,12 +11,14 @@ export class ProjectService {
 	co : number;
 
 	constructor() { 
+
+		// The data is hardcoded in this service because there is no API to populate the Projects data
 		this.projects = [
-		{ id: 1, title: 'Web 2 Angular', leader: 'Albert', deadline: '30-09-2018', depid: 1 },
-		{ id: 2, title: 'Android 1', leader: 'Dayana', deadline: '31-09-2018', depid: 1 },
-		{ id: 3, title: 'Android 2', leader: 'Wenjia', deadline: '30-09-2018', depid: 2 },
-		{ id: 4, title: 'iOS 1', leader: 'Chao', deadline: '31-09-2018', depid: 3 },
-		{ id: 5, title: 'iOS 2', leader: 'Wenjia', deadline: '23-09-2018', depid: 2 }
+		{ id: 1, title: 'Web 2 Angular', deadline: '24-10-2018', depid: 3048 },
+		{ id: 2, title: 'Android 1', deadline: '27-10-2018', depid: 3049 },
+		{ id: 3, title: 'Android 2', deadline: '28-10-2018', depid: 3048 },
+		{ id: 4, title: 'iOS 1', deadline: '30-10-2018', depid: 3049 },
+		{ id: 5, title: 'iOS 2', deadline: '31-10-2018', depid: 3051 }
 		];
 		this.co = this.projects.length;
 	}
@@ -33,7 +35,7 @@ export class ProjectService {
 	  return this.projects[id].title;
 	}
 
-	createProject(newTitle:string, newLeader:string, newDeadline:string):void {
+	createProject(newTitle:string, newDeadline:string):void {
 		let newId : number; 
 		if(this.co <= 0){
 			newId = 1;
@@ -44,7 +46,6 @@ export class ProjectService {
 		let p: Project = {
 			id: newId,
 			title: newTitle,
-			leader: newLeader,
 			deadline: newDeadline,
 			depid: 1
 		}

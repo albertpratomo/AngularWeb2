@@ -40,14 +40,14 @@ export class ProjectsComponent implements OnInit {
 	}
 
 	createProject():void {
-		this.projectService.createProject(this.newTitle,this.newLeader,this.newDeadline);
+		this.projectService.createProject(this.newTitle,this.newDeadline);
 	}
 
 	deleteProject(i: number): void{
 		this.projectService.deleteProject(i);
 	}
 
-	// getDepartmentNameById(i:number): string{
-	//     return this.departmentService.getDepartmentNameById(i-1);
-	//   }
+	getDepartmentNameById(i:number): string{
+	    return this.departmentService.getDepartmentNameById(i);
+	}
 }
