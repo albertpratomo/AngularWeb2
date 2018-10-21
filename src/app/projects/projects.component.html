@@ -1,71 +1,68 @@
 <h3>Projects</h3>
 
-  <div class="row form-inline justify-content-between">
-    <input [(ngModel)]="searchText" class="form-control col-3" placeholder="Search Project">
-    <button class="btn btn-success col-3" (click)="open(modalcreate)">
-      <i class="fa fa-plus"></i> <b> Create Project </b>
-    </button>  
-  </div>
+<div class="row form-inline justify-content-between">
+  <input [(ngModel)]="searchText" class="form-control col-3" placeholder="Search Project">
+  <button class="btn btn-success col-3" (click)="open(modalcreate)">
+    <i class="fa fa-plus"></i> <b> Create Project </b>
+  </button>  
+</div>
 
 <!-- NEW PROJECT MODAL -->
-  <ng-template #modalcreate let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Create Project</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <form>
-        <div class="form-group">
-          <label for="title">Project Title</label>
-          <div class="input-group">
-            <input id="project-title" [(ngModel)]="newTitle" class="form-control" placeholder="Title" name="project-title" >
-          </div>
+<ng-template #modalcreate let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Create Project</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <div class="input-group">
+          <input id="project-title" [(ngModel)]="newTitle" class="form-control" placeholder="Title" name="project-title" >
         </div>
-        <div class="form-group">
-          <label for="title">Project Leader</label>
-          <div class="input-group">
-            <input id="project-leader" [(ngModel)]="newLeader" class="form-control" placeholder="Leader Name" name="project-leader" >
-          </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Deadline</label>
+        <div class="input-group">
+          <input id="project-deadline" [(ngModel)]="newDeadline" class="form-control" placeholder="YYYY-MM-DD" name="project-deadline" >
         </div>
-        <div class="form-group">
-          <label for="title">Project Deadline</label>
-          <div class="input-group">
-            <input id="project-deadline" [(ngModel)]="newDeadline" class="form-control" placeholder="DD-MM-YYYY" name="project-deadline" >
-          </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Department</label>
+        <div class="input-group">
+          <select class="form-control" [(ngModel)]="newPDepId">
+            <option *ngFor="let d of departments" value="{{d.id}}">{{d.name}}</option>
+          </select>
         </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-primary" (click)="createProject()">Create</button>
-    </div>
-  </ng-template>
+      </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-primary" (click)="createProject()">Create</button>
+  </div>
+</ng-template>
 
-  <!-- PROJECTS TABLE  -->
-  <table class="table table-hover">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Project Title</th>
-        <th scope="col">Leader</th>
-        <th scope="col">Deadline</th>
-        <th scope="col">Department</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let project of projects | filter : searchText; let i = index;" (click)="onSelect(project)">
-        <th scope="row">{{ project.id }}</th>
-        <td>{{ project.title }}</td>
-        <td>{{ project.leader }}</td>
-        <td>{{ project.deadline }}</td>
-        <td>{{ getDepartmentNameById(project.depid) }}</td>
-        <td>
-          <!-- <app-detailproject [selectedProjectId]="project.id"></app-detailproject> -->
-          <a  routerLink="/project/{{project.id}}"><button class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></button></a>
-          <button class="btn btn-sm btn-danger" (click)="deleteProject(i)"><i class="fa fa-trash"></i></button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<!-- PROJECTS TABLE  -->
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Project Title</th>
+      <th scope="col">Deadline</th>
+      <th scope="col">Department</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let project of projects | filter : searchText; let i = index;" (click)="onSelect(project)">
+      <th scope="row">{{ project.id }}</th>
+      <td>{{ project.title }}</td>
+      <td>{{ project.deadline }}</td>
+      <td>{{ project.depid }}</td>
+      <td>
+        <a  routerLink="/project/{{project.id}}"><button class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></button></a>
+        <button class="btn btn-sm btn-danger" (click)="deleteProject(i)"><i class="fa fa-trash"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>

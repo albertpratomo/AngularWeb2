@@ -13,25 +13,12 @@ const httpOptions = {
 })
 export class TaskService {
   
-  private apiUrl = 'http://i875395.hera.fhict.nl/api/406448/task';
+  private apiUrl = 'http://i875395.hera.fhict.nl/api/386125/task';
 
-  // tasks : Task[];
-  // co : number;
+  tasks : Task[];
 
   constructor(private http: HttpClient) { 
-//     this.tasks = [
-//   { id: 1, title: 'Making task plan',deadline: '14-9-2018', proid:1},
-//   { id: 2, title: 'Making visual design',deadline: '14-9-2018', proid:2},
-//   { id: 3, title: 'Making database',deadline: '14-9-2018' , proid:3},
-//   { id: 4, title: 'Making mind map',deadline: '14-9-2018', proid:4},
-//   { id: 5, title: 'Doing lego programming',deadline: '21-10-2018', proid:1},
-//   { id: 6, title: 'Doing C# proramming',deadline: '21-10-2018' , proid:3},
-//   { id: 7, title: 'Doing js programming',deadline: '21-10-2018' , proid:5},
-//   { id: 8, title: 'Making website',deadline: '9-11-2018' , proid:4},
-//   { id: 9, title: 'Making report',deadline: '19-12-2018', proid:4},
-//   { id: 10, title:'Making presentation',deadline: '19-10-2018' , proid:2}
-// ];
-//     this.co = this.tasks.length;
+      this.getTasks().subscribe(t => this.tasks = t);
   }
 
   /** GET taskes from the server */

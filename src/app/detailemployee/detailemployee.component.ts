@@ -20,13 +20,15 @@ export class DetailemployeeComponent implements OnInit {
 
   selectedEmployeeId: number;
   selectedEmployee: Employee;
-  selectedDepartment: Department;
-  projecttitles: string[] = [];
+  departments: Department[];
+  // selectedDepartment: Department;
+  // projecttitles: string[] = [];
 
   ngOnInit() {
     this.selectedEmployeeId = +this.route.snapshot.paramMap.get('id');
     this.getSelectedEmployee(this.selectedEmployeeId);
-    this.getProtitlesByEmpid();
+    this.getDepartmentsFromService();
+    // this.getProtitlesByEmpid();
 
   }
 
@@ -46,30 +48,33 @@ export class DetailemployeeComponent implements OnInit {
   }
 
   getDepartmentNameById(i:number): string{
-    return this.departmentService.getDepartmentNameById(i-1);
+    return this.departmentService.getDepartmentNameById(i);
   }
 
-  getSelectedDepartment(): void{
-    // this.selectedDepartment = this.departmentService.getDepartmentById(this.selectedEmployee.depid-1);
-    this.departmentService.getDepartmentById(this.selectedEmployee.depid).subscribe(department => this.selectedDepartment = department);
+  getDepartmentsFromService(): void {
+    this.departmentService.getDepartments().subscribe(departments => this.departments = departments);
   }
 
-  getProtitlesByEmpid(): void{
-    let id = this.selectedEmployeeId;
-    let proids : number[] = [];
-    proids = this.empprjService.getProidsByEmpid(id);
-    for(let proid of proids){
-      let title : string;
-      title = this.projectService.getProjectNameById(proid-1);
-      this.projecttitles.push(title);
-    }
-  }
+  // getSelectedDepartment(): void{
+  //   // this.selectedDepartment = this.departmentService.getDepartmentById(this.selectedEmployee.depid-1);
+  //   this.departmentService.getDepartmentById(this.selectedEmployee.depid).subscribe(department => this.selectedDepartment = department);
+  // }
+
+  // getProtitlesByEmpid(): void{
+  //   let id = this.selectedEmployeeId;
+  //   let proids : number[] = [];
+  //   proids = this.empprjService.getProidsByEmpid(id);
+  //   for(let proid of proids){
+  //     let title : string;
+  //     title = this.projectService.getProjectNameById(proid-1);
+  //     this.projecttitles.push(title);
+  //   }
+  // }
+  
   goBack(): void {
     this.location.back();
   }
-
   
-
   save(): void {
     this.employeeService.updateEmployee(this.selectedEmployee)
     .subscribe(() => this.goBack());

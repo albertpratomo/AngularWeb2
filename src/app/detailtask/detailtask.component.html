@@ -13,79 +13,42 @@
     </h3>
     <div class="row">
       <div class="col-6">
-    <form>
-      <div class="form-group">
-        <label for="title">Task ID</label>
-        <div class="input-group">
-          {{ selectedTask.id }}
+        <div class="form-group">
+          <label for="title">Name</label>
+          <div class="input-group">
+            <input [(ngModel)]="selectedTask.name" class="form-control" placeholder="Name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="title">Due Date</label>
+          <div class="input-group">
+            <input [(ngModel)]="selectedTask.due_date" class="form-control" placeholder="Due Date">
+          </div>
         </div>
       </div>
-      <div class="form-group">
-        <label for="title">Title</label>
-        <div class="input-group">
-          {{ selectedTask.title }}
+      <div class="col-6">
+       <div class="form-group">
+          <label for="title">Department</label>
+          <div class="input-group">
+            <select class="form-control" [(ngModel)]="selectedTask.department_id">
+              <option *ngFor="let d of departments" value="{{d.id}}">{{d.name}}</option>
+            </select>
+          </div>
         </div>
-      </div>
       <div class="form-group">
-        <label for="title">Deadline</label>
-        <div class="input-group">
-          {{ selectedTask.deadline }}
+        <label for="title">Employees</label>
+        <div class="input-group" *ngFor="let name of getNames(selectedTask.employees)">
+          {{ name }}
         </div>
-      </div>
-      <div class="form-group">
-        <label for="title">Project</label>
-        <div class="input-group">
-          {{ selectedProject.title }}
-        </div>
-      </div>
-    </form>
-       
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-2">
+      <button class="btn btn-sm btn-primary" (click)="save()">
+        Update
+      </button>
+    </div>
+  </div>
 </div>
-
-
-<!-- <ng-template #modaledit let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Edit Task</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form>
-      <div class="form-group">
-        <label for="title">Task ID</label>
-        <div class="input-group">
-          <input id="task-id" [(ngModel)]="selectedTask.id" class="form-control" placeholder="ID" name="task-id" >
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="title">Title</label>
-        <div class="input-group">
-          <input id="task-title" [(ngModel)]="selectedTask.title" class="form-control" placeholder="Title" name="task-title" >
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="title">Deadline</label>
-        <div class="input-group">
-          <input id="task-deadline" [(ngModel)]="selectedTask.deadline" class="form-control" placeholder="Deadline" name="task-deadline" >
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="title">Project</label>
-        <div class="input-group">
-          <input id="task-proid" [(ngModel)]="selectedProject.title" class="form-control" placeholder="Proid" name="task-proid" >
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-  </div>
-</ng-template>
- -->
-
-
-
+</div>

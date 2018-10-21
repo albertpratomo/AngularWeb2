@@ -14,27 +14,15 @@
     <div class="row">
       <div class="col-6">
         <div class="form-group">
-          <label for="title">Project ID</label>
+          <label for="title">Title</label>
           <div class="input-group">
-            {{ selectedProject.id }}
+            <input [(ngModel)]="selectedProject.title" class="form-control" placeholder="Title">
           </div>
         </div>
         <div class="form-group">
-          <label for="title">Project Title</label>
+          <label for="title">Deadline</label>
           <div class="input-group">
-            {{ selectedProject.title }}
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="title">Project Leader</label>
-          <div class="input-group">
-            {{ selectedProject.leader }}
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="title">Project Deadline</label>
-          <div class="input-group">
-            {{ selectedProject.deadline }}
+            <input [(ngModel)]="selectedProject.deadline" class="form-control" placeholder="Title">
           </div>
         </div>
       </div>
@@ -42,10 +30,14 @@
         <div class="form-group">
           <label for="title">Department</label>
           <div class="input-group">
-            {{ selectedDepartment.name }}
+            <select class="form-control" [(ngModel)]="selectedProject.depid">
+              <option *ngFor="let d of departments" value="{{d.id}}">{{d.name}}</option>
+            </select>
           </div>
         </div>
-        <div class="form-group">
+
+        <!-- Elements below are used according to the old ERD (before API) -->
+        <!-- <div class="form-group">
           <label for="title">Project Members</label>
           <div class="input-group" *ngFor="let empname of empnames">
             {{ empname }}
@@ -56,7 +48,14 @@
           <div class="input-group" *ngFor="let tasktitle of tasktitles">
             {{ tasktitle }}
           </div>
-        </div>
+        </div> -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+      <button class="btn btn-sm btn-primary" (click)="save()">
+        Update
+      </button>
       </div>
     </div>
   </div>

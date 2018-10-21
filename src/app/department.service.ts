@@ -13,11 +13,15 @@ const httpOptions = {
 })
 export class DepartmentService {
 
-	private apiUrl = 'http://i875395.hera.fhict.nl/api/406448/department';
+	departments : Department[];
+
+	private apiUrl = 'http://i875395.hera.fhict.nl/api/386125/department';
 
 	constructor(
 	 private http: HttpClient
-	) {}
+	) {
+    	this.getDepartments().subscribe(d => this.departments = d);
+	}
 
 	/** GET departmentes from the server */
 	getDepartments (): Observable<Department[]> {
@@ -81,7 +85,7 @@ export class DepartmentService {
 	  };
 	}
 
-	// getDepartmentNameById(id:number): string {
-	//   return this.departments[id].name;
-	// }
+	getDepartmentNameById(id:number): string {
+	  return this.departments.find(d => d.id === id).name;
+	}
 }
