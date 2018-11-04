@@ -9,6 +9,8 @@ Worked with 3 other developers.
 October 2018
 
 
+## Technical
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
 
 ## Development server
