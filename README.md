@@ -1,4 +1,13 @@
-# Web2
+# Angular Web2
+
+Live version can be found here : http://i406448.hera.fhict.nl/web2
+
+This project is made for my Web 2 Angular class at Fontys University of Applied Sciences, Eindhoven.
+The web app is used to manage Employees, Departments, Projects, and Tasks.
+Worked with 3 other developers.
+
+October 2018
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
 
