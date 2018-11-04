@@ -9,6 +9,7 @@ Worked with 3 other developers. Tools and libraries used : NgBootstrap, AngularC
 October 2018
 
 https://ng-bootstrap.github.io/
+
 https://mattlewis92.github.io/angular-calendar/#/kitchen-sink
 
 ## Technical
