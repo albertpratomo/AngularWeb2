@@ -4,10 +4,12 @@ Live version can be found here : http://i406448.hera.fhict.nl/web2
 
 This project is made for my Web 2 Angular class at Fontys University of Applied Sciences, Eindhoven.
 The web app is used to manage Employees, Departments, Projects, and Tasks.
-Worked with 3 other developers.
+Worked with 3 other developers. Tools and libraries used : NgBootstrap, AngularCalendar
 
 October 2018
 
+https://ng-bootstrap.github.io/
+https://mattlewis92.github.io/angular-calendar/#/kitchen-sink
 
 ## Technical
 
